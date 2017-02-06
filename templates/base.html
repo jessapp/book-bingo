@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>Book Bingo</title>
+  <script src = "https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+  <hr>
+
+  {% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+  {% block content %} put your content here {% endblock %}
+
+  
+
+</body>
+</html>
