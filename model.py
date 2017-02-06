@@ -1,7 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 
-import correlation
-
 db = SQLAlchemy()
 
 class User(db.Model):

@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h1>Book Bingo</h1>
+
+{% if 'username' in session %}
+<h2>Log Out</h2>
+<p><a href="/logout">Log Out Here</a></p> 
+
+{% else %}
+
+<h2>Log In Here</h2>
+<p><a href="/login">Log In Here</a></p>
+
+<h2>Register</h2>
+<p><a href="/register">Register Here</a></p>
+
+
+{% endif %}
+
 {% endblock %}
