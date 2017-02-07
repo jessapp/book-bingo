@@ -85,9 +85,9 @@ class Square(db.Model):
     y_coord = db.Column(db.Integer)
 
     # Set up backrefs for association tables 
-    user = db.relationship("User", secondary="squareusers", backref="squares")
+    squareusers = db.relationship("SquareUser", backref="squares")
 
-    book = db.relationship("Book", secondary="squareusers", backref="squares")
+    # books = db.relationship("Book", secondary="squareusers", backref="squares")
 
 
     # Set up backrefs for middle tables - move into parent classes? 
@@ -119,6 +119,8 @@ class SquareUser(db.Model):
                         db.ForeignKey('books.book_id'),
                         nullable=False)
 
+    # add relationships to users and books
+
     def __repr__(self):
         """Provide helpful representation when printed"""
 
@@ -134,7 +136,7 @@ class Book(db.Model):
     title = db.Column(db.String(64))
     author = db.Column(db.String(64))
 
-    genre = db.relationship("Genre", secondary="bookgenres", backref="books")
+    genres = db.relationship("Genre", secondary="bookgenres", backref="books")
 
     def __repr__(self):
         """Provide helpful representation when printed"""
@@ -175,6 +177,46 @@ def connect_to_db(app):
     db.app = app
     db.init_app(app) 
 
+def example_data():
+    """Create example data to test the database"""
+
+    u1 = User(email='fake@email.com', password='password', first_name='Al', last_name='Books')
+    u2 = User(email='anotherfake@email.com', password='password2', first_name='Ballooincorn', 
+              last_name='Jones')
+
+    board1 = Board(board_name="My Board")
+    board2 = Board(board_name="Reading")
+
+    board1.users.append(u1)
+
+    # bu1 = BoardUser(user_id=1, board_id=1)
+    # bu2 = BoardUser(user_id=2, board_id=2)
+
+    book1 = Book(title="This Book", author="Jane Austen")
+    book2 = Book(title="Another Book", author="Terry Pratchett")
+
+    genre1 = Genre(name="Romance")
+    genre2 = Genre(name="Fantasy")
+
+    book1.genres.append(genre1)
+
+    # bg1 = BookGenre(book_id=1, genre_id=1)
+    # bg2 = BookGenre(book_id=2, genre_id=2)
+
+
+
+    square1 = Square(board_id=1, genre_id=1, x_coord=2, y_coord=3)
+    square2 = Square(board_id=2, genre_id=2, x_coord=3, y_coord=4)
+
+    # db session add and commit here to retrieve IDs, since squareuser has no relationships
+
+
+    su1 = SquareUser(square_id=square1.square_id, user_id=1, book_id=1)
+    su2 = SquareUser(square_id=2, user_id=2, book_id=1)
+
+    db.session.add_all([u1, u2, board1, board2, bu1, bu2, book1, book2, genre1,
+        genre2, bg1, bg2, square1, square2, su1, su2])
+    db.session.commit()
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

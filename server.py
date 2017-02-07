@@ -121,6 +121,12 @@ def display_user(user_id):
     return render_template("user_details.html",
                     first_name=first_name)
 
+@app.route('/board')
+def display_board():
+    """Displays bingo board"""
+
+    return render_template("board.html")
+
 
 if __name__ == "__main__":
 

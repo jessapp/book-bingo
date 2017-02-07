@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- To do: -->
+<!-- When a book has been read, don't allow future input in that cell -->
+<!-- Visualize that the cell has been read by changing color class -->
+<!-- Connect input to goodreads api -->
+
+<div id="board">
+    <h1>Book Bingo!</h1>
+    <table style="width:100%" border="1">
+        <tr> 
+            <td id="cell0" class="unread"> 
+                <form action="/board" method="POST">Science Fiction<br>
+                Your Book: <input type="text" name="cell0input"><br>
+                <input type="submit" value="Submit">
+            </form>
+            </td>
+            <td id="cell5" class="unread">
+                <form action="/board" method="POST">Romance<br>
+                Your Book: <input type="text" name="cell5input"><br>
+                <input type="submit" value="Submit">
+            </td>
+            <td id="cell10" class="unread">
+                <form action="/board" method="POST">Magical Realism<br>
+                Your Book: <input type="text" name="cell0input"><br>
+                <input type="submit" value="Submit">
+            </td>
+            <td id="cell14" class="unread">
+                <form action="/board" method="POST">Autobiography<br>
+                Your Book: <input type="text" name="cell0input"><br>
+                <input type="submit" value="Submit">
+            </td>
+            <td id="cell19" class="unread">
+                <form action="/board" method="POST">Thriller<br>
+                Your Book: <input type="text" name="cell0input"><br>
+                <input type="submit" value="Submit">
+            </td>
+        </tr>
+        <tr> 
+            <td id="cell1"> Sample</td>
+            <td id="cell6"> Sample1</td>
+            <td id="cell11"> Sample2</td>
+            <td id="cell15"> Sample3</td>
+            <td id="cell20"> Sample4</td>
+        </tr>
+        <tr> 
+            <td id="cell2"> Sample</td>
+            <td id="cell7"> Sample1</td>
+            <td id="free"> free</td>
+            <td id="cell16"> Sample3</td>
+            <td id="cell21"> Sample4</td>
+        </tr>
+        <tr> 
+            <td id="cell3"> Sample</td>
+            <td id="cell8"> Sample1</td>
+            <td id="cell12"> Sample2</td>
+            <td id="cell17"> Sample3</td>
+            <td id="cell22"> Sample4</td>
+        </tr>
+        <tr> 
+            <td id="cell4"> Sample</td>
+            <td id="cell9"> Sample1</td>
+            <td id="cell13"> Sample2</td>
+            <td id="cell18"> Sample3</td>
+            <td id="cell23"> Sample4</td>
+        </tr>
+    </table>
+
+</div>
+
+
+{% endblock %}
