@@ -4,6 +4,12 @@
 <h1> Welcome, {{first_name}}! </h1>
 
     <h2>Your boards: </h2>
+        <ul>
+      {% for board_name in boards %}
+          <li>
+                {{ board_name }}
+          </li>
+      {% endfor %}
 
     <h2> Your books: </h2>
 

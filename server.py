@@ -112,14 +112,25 @@ def display_user(user_id):
     """User homepage"""
 
 
-    first_name = db.session.query(User).filter_by(user_id=user_id).one().first_name  
+    first_name = db.session.query(User).filter_by(user_id=user_id).one().first_name
+
+    # Finds user's boards 
+    user_boards = db.session.query(User).filter_by(user_id=3).one().boards 
+
+    boards = []
+
+    for board in user_boards:
+        board_name = board.board_name
+        boards.append(board_name)
+
+    #Finds user's read
     
     # Link to new board
-    # Link to user's current boards through db queries
 
 
     return render_template("user_details.html",
-                    first_name=first_name)
+                    first_name=first_name,
+                    boards=boards)
 
 @app.route('/board')
 def display_board():
