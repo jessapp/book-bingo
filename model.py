@@ -189,9 +189,11 @@ def example_data():
 
     board1 = Board(board_name="My Board")
     board2 = Board(board_name="Reading")
+    #board3 = Board(board_name="Populated Example")
 
     board1.users.append(u1)
     board2.users.append(u2)
+    #board3.users.append(u1)
 
     book1 = Book(title="This Book", author="Jane Austen")
     book2 = Book(title="Another Book", author="Terry Pratchett")
@@ -202,8 +204,11 @@ def example_data():
     book1.genres.append(genre1)
     book2.genres.append(genre2)
 
-    square1 = Square(x_coord=2, y_coord=3)
-    square2 = Square(x_coord=3, y_coord=4)
+    square1 = Square(x_coord=1, y_coord=1)
+    square2 = Square(x_coord=1, y_coord=2)
+    #square1 = Square(x_coord=1, y_coord=1)
+    #board3.squares.append(square1)
+    #etc
 
     board1.squares.append(square1)
     board2.squares.append(square2)

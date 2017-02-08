@@ -111,6 +111,18 @@ def logout_complete():
 def display_user(user_id):
     """User homepage"""
 
+    # board_list = []
+
+    # for board in user_boards:
+    #     board_id = board.board_id
+    #     board_list.append(board_id)
+
+    # board_names = []
+
+    # for board_id in board_list:
+    #     board_name = board.board_name
+    #     board_names.append(board_name)
+
 
     first_name = db.session.query(User).filter_by(user_id=user_id).one().first_name
 
@@ -121,22 +133,47 @@ def display_user(user_id):
 
     for board in user_boards:
         board_name = board.board_name
+        board_id = board.board_id
         boards.append(board_name)
-
-    #Finds user's read
     
     # Link to new board
 
-
     return render_template("user_details.html",
                     first_name=first_name,
-                    boards=boards)
+                    board_id=board_id,
+                    boards=boards,
+                    board_name=board_name)
 
-@app.route('/board')
-def display_board():
+@app.route('/board/<board_id>')
+def display_board(board_id):
     """Displays bingo board"""
 
-    return render_template("board.html")
+    genres = db.session.query(Square).filter_by(board_id=board_id).all()
+
+    genre_ids = []
+
+    for genre in genres:
+        genre_id = genre.genre_id
+        genre_ids.append(genre_id)
+
+    genre_names = []
+
+    for genre_id in genre_ids:
+        genre_object = db.session.query(Genre).filter_by(genre_id=genre_id).one()
+        genre_names.append(genre_object.name)
+
+    row1 = genre_names[:5]
+    row2 = genre_names[5:10]
+    row3 = genre_names[10:15]
+    row4 = genre_names[15:20]
+    row5 = genre_names[20:]
+
+    rows = [row1, row2, row3, row4, row5]
+
+
+    return render_template("board.html",
+                            genre_names=genre_names,
+                            rows=rows)
 
 
 if __name__ == "__main__":

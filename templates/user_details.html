@@ -5,12 +5,10 @@
 
     <h2>Your boards: </h2>
         <ul>
-      {% for board_name in boards %}
+      {% for board in boards %}
           <li>
-                {{ board_name }}
+                <a href="/board/{{board_id}}"> {{ board_name }}
           </li>
       {% endfor %}
-
-    <h2> Your books: </h2>
 
 {% endblock %}
