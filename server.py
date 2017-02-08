@@ -51,7 +51,7 @@ def login_process():
 
     user_id = db.session.query(User).filter_by(email=email).one().user_id
 
-    session['username'] = email
+    session['user_id'] = user_id
     flash("Logged in!")
 
     return redirect("/users/" + str(user_id))
@@ -84,7 +84,7 @@ def register_process():
 
     db.session.commit()
 
-    session['username'] = email
+    session['user_id'] = user_id
     flash("Logged in!")
 
     return redirect("/")
@@ -101,7 +101,7 @@ def logout():
 def logout_complete():
     """Implement user logout"""
 
-    del session["username"]
+    del session["user_id"]
     flash("Logged out!")
 
     return redirect("/")
@@ -111,23 +111,9 @@ def logout_complete():
 def display_user(user_id):
     """User homepage"""
 
-    # board_list = []
-
-    # for board in user_boards:
-    #     board_id = board.board_id
-    #     board_list.append(board_id)
-
-    # board_names = []
-
-    # for board_id in board_list:
-    #     board_name = board.board_name
-    #     board_names.append(board_name)
-
-
     first_name = db.session.query(User).filter_by(user_id=user_id).one().first_name
 
-    # Finds user's boards 
-    user_boards = db.session.query(User).filter_by(user_id=3).one().boards 
+    user_boards = db.session.query(User).filter_by(user_id=user_id).one().boards 
 
     boards = []
 
@@ -135,8 +121,6 @@ def display_user(user_id):
         board_name = board.board_name
         board_id = board.board_id
         boards.append(board_name)
-    
-    # Link to new board
 
     return render_template("user_details.html",
                     first_name=first_name,
@@ -144,9 +128,158 @@ def display_user(user_id):
                     boards=boards,
                     board_name=board_name)
 
+
+@app.route('/create-board', methods=["GET"])
+def board_form():
+    """Displays form allowing user to create new board"""
+
+    if "user_id" in session:
+        return render_template('new_board.html')
+    else:
+        flash("Please log in to create a board.")
+        return redirect("/login")
+
+
+@app.route('/create-board', methods=["POST"])
+def create_board():
+    """Populates the board with user data and redirects the user to it"""
+
+    #get user_id from the session
+    user_id = session["user_id"]
+
+    #get user object
+    user = User.query.get(user_id)
+
+    # Initialize new board object
+    board_name = request.form.get("board-name")
+
+    new_board = Board(board_name=board_name)
+
+    # Append user to board 
+    new_board.users.append(user)
+
+    # Get board genres from HTML Form
+    genre1 = request.form.get("genre1")
+    genre2 = request.form.get("genre2")
+    genre3 = request.form.get("genre3")
+    genre4 = request.form.get("genre4")
+    genre5 = request.form.get("genre5")
+    genre6 = request.form.get("genre6")
+    genre7 = request.form.get("genre7")
+    genre8 = request.form.get("genre8")
+    genre9 = request.form.get("genre9")
+    genre10 = request.form.get("genre10")
+    genre11 = request.form.get("genre11")
+    genre12 = request.form.get("genre12")
+    genre13 = "FREE SQUARE"
+    genre14 = request.form.get("genre13")
+    genre15 = request.form.get("genre14")
+    genre16 = request.form.get("genre15")
+    genre17 = request.form.get("genre16")
+    genre18 = request.form.get("genre17")
+    genre19 = request.form.get("genre18")
+    genre20 = request.form.get("genre19")
+    genre21 = request.form.get("genre20")
+    genre22 = request.form.get("genre21")
+    genre23 = request.form.get("genre22")
+    genre24 = request.form.get("genre23")
+    genre25 = request.form.get("genre24")
+
+    # Create squares
+    square1 = Square(x_coord=1, y_coord=1)
+    square2 = Square(x_coord=1, y_coord=2)
+    square3 = Square(x_coord=1, y_coord=3)
+    square4 = Square(x_coord=1, y_coord=4)
+    square5 = Square(x_coord=1, y_coord=5)
+    square6 = Square(x_coord=2, y_coord=1)
+    square7 = Square(x_coord=2, y_coord=2)
+    square8 = Square(x_coord=2, y_coord=3)
+    square9 = Square(x_coord=2, y_coord=4)
+    square10 = Square(x_coord=2, y_coord=5)
+    square11 = Square(x_coord=3, y_coord=1)
+    square12 = Square(x_coord=3, y_coord=2)
+    square13 = Square(x_coord=3, y_coord=3)
+    square14 = Square(x_coord=3, y_coord=4)
+    square15 = Square(x_coord=3, y_coord=5)
+    square16 = Square(x_coord=4, y_coord=1)
+    square17 = Square(x_coord=4, y_coord=2)
+    square18 = Square(x_coord=4, y_coord=3)
+    square19 = Square(x_coord=4, y_coord=4)
+    square20 = Square(x_coord=4, y_coord=5)
+    square21 = Square(x_coord=5, y_coord=1)
+    square22 = Square(x_coord=5, y_coord=2)
+    square23 = Square(x_coord=5, y_coord=3)
+    square24 = Square(x_coord=5, y_coord=4)
+    square25 = Square(x_coord=5, y_coord=5)
+    
+    #Append squares to board and assign genres
+    new_board.squares.append(square1)
+    square1.genre = genre1
+    new_board.squares.append(square2)
+    square2.genre = genre2
+    new_board.squares.append(square3)
+    square3.genre = genre3
+    new_board.squares.append(square3)
+    square3.genre = genre3
+    new_board.squares.append(square4)
+    square4.genre = genre4
+    new_board.squares.append(square5)
+    square5.genre = genre5
+    new_board.squares.append(square5)
+    square5.genre = genre5
+    new_board.squares.append(square6)
+    square6.genre = genre6
+    new_board.squares.append(square7)
+    square7.genre = genre7
+    new_board.squares.append(square8)
+    square8.genre = genre8
+    new_board.squares.append(square9)
+    square9.genre = genre9
+    new_board.squares.append(square10)
+    square10.genre = genre10
+    new_board.squares.append(square11)
+    square11.genre = genre11
+    new_board.squares.append(square12)
+    square12.genre = genre12
+    new_board.squares.append(square13)
+    square13.genre = genre13
+    new_board.squares.append(square14)
+    square14.genre = genre14
+    new_board.squares.append(square15)
+    square15.genre = genre15
+    new_board.squares.append(square16)
+    square16.genre = genre16
+    new_board.squares.append(square17)
+    square17.genre = genre17
+    new_board.squares.append(square18)
+    square18.genre = genre18
+    new_board.squares.append(square19)
+    square19.genre = genre19
+    new_board.squares.append(square20)
+    square20.genre = genre20
+    new_board.squares.append(square21)
+    square21.genre = genre21
+    new_board.squares.append(square22)
+    square22.genre = genre22
+    new_board.squares.append(square23)
+    square23.genre = genre23
+    new_board.squares.append(square24)
+    square24.genre = genre24
+    new_board.squares.append(square25)
+    square25.genre = genre25
+    
+    db.session.add(new_board)
+    db.session.commit()
+
+    # get new board ID from DB
+    board_id = new_board.board_id
+
+    return redirect('/board/' + str(board_id))
+
+
 @app.route('/board/<board_id>')
 def display_board(board_id):
-    """Displays bingo board"""
+    """Displays bingo board using information from database"""
 
     genres = db.session.query(Square).filter_by(board_id=board_id).all()
 

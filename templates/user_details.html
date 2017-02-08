@@ -3,6 +3,10 @@
 
 <h1> Welcome, {{first_name}}! </h1>
 
+    <form action="/create-board">
+        <input type="submit" value="Create A New Board" />
+    </form>
+
     <h2>Your boards: </h2>
         <ul>
       {% for board in boards %}
@@ -10,5 +14,6 @@
                 <a href="/board/{{board_id}}"> {{ board_name }}
           </li>
       {% endfor %}
+      <br>
 
 {% endblock %}
