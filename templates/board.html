@@ -12,13 +12,51 @@
     {% for row in rows %}
         <tr>
         {% for genre in row %}
-            <td> {{ genre }} </td>
+            <td> {{ genre }} 
+                <form>
+                {% if genre != "FREE SQUARE" %}
+                    <input type="text" class="book">
+                    <input type="submit" value="Submit" class="submit" id="{{ genre.lower() }}">
+                </form></td>
+                <div id="books-read" class="books-read"></div>
+                {% endif %}
         {% endfor %}
         </tr>
     {% endfor %}
     </table>
 
 </div>
+
+<script type="text/javascript">
+    
+
+    // When submit is clicked, target that individual book text input
+    $(function() {
+      $(".submit").on("click", function(event) {
+        var book = $(event.target).siblings(".book");
+
+        var formInputs = {
+            "book": book.val()
+        }
+
+        $.post("/update-board.json",
+                formInputs,
+                showTitle
+            )
+      })    
+    });
+
+        // Ajax call success function
+    function showTitle(result){
+        console.log(result);
+        $("#books-read").html("Success!")
+    }
+    
+
+
+</script>
+
+
 
 
 {% endblock %}

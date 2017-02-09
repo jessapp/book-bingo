@@ -11,6 +11,8 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 
 from sqlalchemy.orm.exc import NoResultFound
 
+import json
+
 
 
 app = Flask(__name__)
@@ -202,7 +204,7 @@ def create_board():
     return redirect('/board/' + str(board_id))
 
 
-@app.route('/board/<board_id>')
+@app.route('/board/<board_id>', methods=["GET"])
 def display_board(board_id):
     """Displays bingo board using information from database"""
 
@@ -220,18 +222,34 @@ def display_board(board_id):
         genre_object = db.session.query(Genre).filter_by(genre_id=genre_id).one()
         genre_names.append(genre_object.name)
 
+    # Splits all genres into rows of 5    
     row1 = genre_names[:5]
     row2 = genre_names[5:10]
     row3 = genre_names[10:15]
     row4 = genre_names[15:20]
     row5 = genre_names[20:]
 
+    # Creates lists of rows 
     rows = [row1, row2, row3, row4, row5]
 
 
     return render_template("board.html",
                             genre_names=genre_names,
                             rows=rows)
+
+
+@app.route('/update-board.json', methods=["POST"])
+def process_submission():
+
+    book_title = request.form.get("book")
+
+    print "Book title %s" % (book_title)
+
+    # To do: Add title to database
+
+    response = {"title": book_title}
+
+    return jsonify(response)
 
 
 if __name__ == "__main__":
@@ -242,7 +260,7 @@ if __name__ == "__main__":
     connect_to_db(app)
 
     # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
 
 
     
