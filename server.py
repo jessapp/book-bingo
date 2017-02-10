@@ -208,48 +208,60 @@ def create_board():
 def display_board(board_id):
     """Displays bingo board using information from database"""
 
-    genres = db.session.query(Square).filter_by(board_id=board_id).all()
+    squares = db.session.query(Square).filter_by(board_id=board_id).all()
 
-    genre_ids = []
+    rows = []
 
-    for genre in genres:
-        genre_id = genre.genre_id
-        genre_ids.append(genre_id)
-
-    genre_names = []
-
-    for genre_id in genre_ids:
-        genre_object = db.session.query(Genre).filter_by(genre_id=genre_id).one()
-        genre_names.append(genre_object.name)
+    for square in squares:
+        square_id = square.square_id
+        genre_name = square.genre.name
+        rows.append((square_id, genre_name))
 
     # Splits all genres into rows of 5    
-    row1 = genre_names[:5]
-    row2 = genre_names[5:10]
-    row3 = genre_names[10:15]
-    row4 = genre_names[15:20]
-    row5 = genre_names[20:]
+    row1 = rows[:5]
+    row2 = rows[5:10]
+    row3 = rows[10:15]
+    row4 = rows[15:20]
+    row5 = rows[20:]
 
     # Creates lists of rows 
-    rows = [row1, row2, row3, row4, row5]
+    board_rows = [row1, row2, row3, row4, row5]
 
 
     return render_template("board.html",
-                            genre_names=genre_names,
-                            rows=rows)
+                            board_rows=board_rows)
 
 
 @app.route('/update-board.json', methods=["POST"])
 def process_submission():
 
+    # get user_id from session:
+    # user_id = session["user_id"]
+
     book_title = request.form.get("book")
+
+    # genre = request.form.get("genre")
+
+    square_id = request.form.get("square_id")
+
+    # import pdb; pdb.set_trace();
 
     print "Book title %s" % (book_title)
 
-    # To do: Add title to database
+    # get author name & ajax it
 
-    response = {"title": book_title}
+    # get board ID from... idk where 
 
-    return jsonify(response)
+    # get square ID 
+
+    # To do: Add all that to the DB
+
+    title = str(book_title)
+    # print type(response)
+    # print response
+
+    return jsonify({'title': title, 'square_id': square_id})
+    # return title
 
 
 if __name__ == "__main__":

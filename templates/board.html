@@ -9,17 +9,18 @@
 <div id="board">
     <h1>Book Bingo!</h1>
     <table style="width:100%" border="1">
-    {% for row in rows %}
+    {% for row in board_rows %}
         <tr>
-        {% for genre in row %}
-            <td> {{ genre }} 
+        {% for square_id, genre_name in row %}
+            <td> {{ genre_name }} 
+                {% if genre_name != "FREE SQUARE" %}
                 <form>
-                {% if genre != "FREE SQUARE" %}
-                    <input type="text" class="book">
-                    <input type="submit" value="Submit" class="submit" id="{{ genre.lower() }}">
-                </form></td>
-                <div id="books-read" class="books-read"></div>
+                    <input name="title" type="text" class="book" data-square-id="{{ square_id }}"><br>
+                    <input name="submit" type="submit" value="Submit" class="submit" id="{{ genre_name.lower() }}">
+                    <div class="books-read" id="books-read-{{ square_id }}"></div>
+                </form>
                 {% endif %}
+            </td>
         {% endfor %}
         </tr>
     {% endfor %}
@@ -28,15 +29,26 @@
 </div>
 
 <script type="text/javascript">
+
+    "use strict";
     
+    // Ajax call success function
+    function showTitle(result){
+        console.log(result);
+
+        $("#books-read-" + result.square_id).html(result.title);
+
+    }
 
     // When submit is clicked, target that individual book text input
     $(function() {
       $(".submit").on("click", function(event) {
-        var book = $(event.target).siblings(".book");
+        event.preventDefault();
+        var book = $(this).siblings(".book");
 
         var formInputs = {
-            "book": book.val()
+            "book": book.val(),
+            "square_id": book.data("square-id")
         }
 
         $.post("/update-board.json",
@@ -46,11 +58,6 @@
       })    
     });
 
-        // Ajax call success function
-    function showTitle(result){
-        console.log(result);
-        $("#books-read").html("Success!")
-    }
     
 
 
