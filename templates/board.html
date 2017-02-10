@@ -15,8 +15,9 @@
             <td> {{ genre_name }} 
                 {% if genre_name != "FREE SQUARE" %}
                 <form>
-                    <input name="title" type="text" class="book" data-square-id="{{ square_id }}"><br>
-                    <input name="submit" type="submit" value="Submit" class="submit" id="{{ genre_name.lower() }}">
+                    <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square_id }}"><br>
+                    <input type="text" name="author" class="author" placeholder="Author"><br>
+                    <input name="submit" type="submit" value="Submit" class="submit">
                     <div class="books-read" id="books-read-{{ square_id }}"></div>
                 </form>
                 {% endif %}
@@ -36,7 +37,7 @@
     function showTitle(result){
         console.log(result);
 
-        $("#books-read-" + result.square_id).html(result.title);
+        $("#books-read-" + result.square_id).html(result.title + " by " + result.author);
 
     }
 
@@ -45,10 +46,12 @@
       $(".submit").on("click", function(event) {
         event.preventDefault();
         var book = $(this).siblings(".book");
+        var author = $(this).siblings(".author");
 
         var formInputs = {
             "book": book.val(),
-            "square_id": book.data("square-id")
+            "square_id": book.data("square-id"),
+            "author": author.val(),
         }
 
         $.post("/update-board.json",

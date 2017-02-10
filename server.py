@@ -235,34 +235,53 @@ def display_board(board_id):
 @app.route('/update-board.json', methods=["POST"])
 def process_submission():
 
-    # get user_id from session:
-    # user_id = session["user_id"]
-
-    book_title = request.form.get("book")
-
-    # genre = request.form.get("genre")
+    user_id = session["user_id"]
 
     square_id = request.form.get("square_id")
 
-    # import pdb; pdb.set_trace();
+    title = request.form.get("book")
 
-    print "Book title %s" % (book_title)
+    author = request.form.get("author")
 
-    # get author name & ajax it
+    genre_id = db.session.query(Square).filter_by(square_id=square_id).one().genre_id
 
-    # get board ID from... idk where 
+    genre_object = Genre.query.get(genre_id)
 
-    # get square ID 
+    board_id = db.session.query(Square).filter_by(square_id=square_id).one().board_id
 
-    # To do: Add all that to the DB
+    user_object = User.query.get(user_id)
 
-    title = str(book_title)
-    # print type(response)
-    # print response
+    square_object = Square.query.get(square_id)
 
-    return jsonify({'title': title, 'square_id': square_id})
-    # return title
 
+    print "Book title %s Author %s Square_ID %s User %s Genre ID %s Board ID %s" % (title, author, square_id, user_id, genre_id, board_id)
+
+    # Add new book to the DB
+
+    new_book = Book(title=title, author=author)
+    new_book.genres.append(genre_object)
+
+    # Bring user, book, and square together in DB
+
+    new_Sqaureuser = SquareUser()
+
+    new_Sqaureuser.user = user_object
+    new_Sqaureuser.square = square_object
+    new_Sqaureuser.book = new_book
+
+    db.session.add(new_Sqaureuser)
+
+    db.session.commit()
+
+
+    # Send data back to Ajax call success function 
+
+    book_data = {'title': title, 
+                'square_id': square_id,
+                'author': author
+                }
+
+    return jsonify(book_data)
 
 if __name__ == "__main__":
 
