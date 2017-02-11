@@ -227,9 +227,31 @@ def display_board(board_id):
     # Creates lists of rows 
     board_rows = [row1, row2, row3, row4, row5]
 
+    # If a square has an author and a title, bring it over
+    # START HERE 
+
+    user_id = session["user_id"]
+
+    user_squares = db.session.query(SquareUser).filter_by(user_id=user_id).all()
+
+    book_ids = []
+
+    for sqaure in user_squares:
+        book_id = user_squares.book_id
+        book_ids.append(book_id)
+
+    book_info = []
+
+    for book_id in book_ids:
+        book_object = Book.query.get(book_id)
+        title = book_object.title
+        author = book_object.author
+        book_info.append((title, author))
+
 
     return render_template("board.html",
-                            board_rows=board_rows)
+                            board_rows=board_rows,
+                            book_info=book_info)
 
 
 @app.route('/update-board.json', methods=["POST"])
@@ -237,7 +259,11 @@ def process_submission():
 
     user_id = session["user_id"]
 
+    user_object = User.query.get(user_id)
+
     square_id = request.form.get("square_id")
+
+    square_object = Square.query.get(square_id)
 
     title = request.form.get("book")
 
@@ -249,12 +275,9 @@ def process_submission():
 
     board_id = db.session.query(Square).filter_by(square_id=square_id).one().board_id
 
-    user_object = User.query.get(user_id)
-
-    square_object = Square.query.get(square_id)
-
 
     print "Book title %s Author %s Square_ID %s User %s Genre ID %s Board ID %s" % (title, author, square_id, user_id, genre_id, board_id)
+
 
     # Add new book to the DB
 
