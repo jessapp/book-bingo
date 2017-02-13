@@ -11,15 +11,19 @@
     <table style="width:100%" border="1">
     {% for row in board_rows %}
         <tr>
-        {% for square_id, genre_name in row %}
-            <td> {{ genre_name }} 
+        {% for square_id, genre_id, title, author, user_id, genre_name in row %}
+            <td> {{ genre_name }} <br>
                 {% if genre_name != "FREE SQUARE" %}
-                <form>
-                    <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square_id }}"><br>
-                    <input type="text" name="author" class="author" placeholder="Author"><br>
-                    <input name="submit" type="submit" value="Submit" class="submit">
-                    <div class="books-read" id="books-read-{{ square_id }}"></div>
-                </form>
+                    {% if title %}
+                        {{title}} by {{author}}
+                    {% else %}
+                        <form>
+                        <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square_id }}"><br>
+                        <input type="text" name="author" class="author" placeholder="Author"><br>
+                        <input name="submit" type="submit" value="Submit" class="submit" id="submit-{{ square_id }}">
+                        <div class="books-read" id="books-read-{{ square_id }}"></div>
+                    </form>
+                    {% endif %}
                 {% endif %}
             </td>
         {% endfor %}
@@ -38,6 +42,7 @@
         console.log(result);
 
         $("#books-read-" + result.square_id).html(result.title + " by " + result.author);
+        $("#submit-" + result.square_id).attr('disabled', 'disabled');
 
     }
 
@@ -60,9 +65,7 @@
             )
       })    
     });
-
     
-
 
 </script>
 

@@ -208,50 +208,25 @@ def create_board():
 def display_board(board_id):
     """Displays bingo board using information from database"""
 
-    squares = db.session.query(Square).filter_by(board_id=board_id).all()
-
-    rows = []
-
-    for square in squares:
-        square_id = square.square_id
-        genre_name = square.genre.name
-        rows.append((square_id, genre_name))
+    book_info = db.session.query(Square.square_id,
+                                 Square.genre_id,
+                                 Book.title,
+                                 Book.author,
+                                 SquareUser.user_id,
+                                 Genre.name).join(SquareUser, isouter=True).join(Book, isouter=True).join(Genre, isouter=True).filter(Square.board_id==board_id).order_by(Square.square_id).all()
 
     # Splits all genres into rows of 5    
-    row1 = rows[:5]
-    row2 = rows[5:10]
-    row3 = rows[10:15]
-    row4 = rows[15:20]
-    row5 = rows[20:]
+    row1 = book_info[:5]
+    row2 = book_info[5:10]
+    row3 = book_info[10:15]
+    row4 = book_info[15:20]
+    row5 = book_info[20:]
 
     # Creates lists of rows 
     board_rows = [row1, row2, row3, row4, row5]
 
-    # If a square has an author and a title, bring it over
-    # START HERE 
-
-    user_id = session["user_id"]
-
-    user_squares = db.session.query(SquareUser).filter_by(user_id=user_id).all()
-
-    book_ids = []
-
-    for sqaure in user_squares:
-        book_id = user_squares.book_id
-        book_ids.append(book_id)
-
-    book_info = []
-
-    for book_id in book_ids:
-        book_object = Book.query.get(book_id)
-        title = book_object.title
-        author = book_object.author
-        book_info.append((title, author))
-
-
     return render_template("board.html",
-                            board_rows=board_rows,
-                            book_info=book_info)
+                            board_rows=board_rows)
 
 
 @app.route('/update-board.json', methods=["POST"])
@@ -314,7 +289,7 @@ if __name__ == "__main__":
     connect_to_db(app)
 
     # Use the DebugToolbar
-    # DebugToolbarExtension(app)
+    DebugToolbarExtension(app)
 
 
     
