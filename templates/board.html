@@ -2,8 +2,6 @@
 {% block content %}
 
 <!-- To do: -->
-<!-- When a book has been read, don't allow future input in that cell -->
-<!-- Visualize that the cell has been read by changing color class -->
 <!-- Connect input to goodreads api -->
 
 <div id="board">
@@ -12,20 +10,25 @@
     {% for row in board_rows %}
         <tr>
         {% for square_id, genre_id, title, author, user_id, genre_name in row %}
-            <td> {{ genre_name }} <br>
+            <td id="square-{{ square_id }}" {% if title %} class="read" {% endif %}> {{ genre_name }} <br>
                 {% if genre_name != "FREE SQUARE" %}
                     {% if title %}
                         {{title}} by {{author}}
                     {% else %}
-                        <form>
+                    <div id="submission-form">
+                    <form>
+                        <div id="data-fields">
                         <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square_id }}"><br>
-                        <input type="text" name="author" class="author" placeholder="Author"><br>
-                        <input name="submit" type="submit" value="Submit" class="submit" id="submit-{{ square_id }}">
-                        <div class="books-read" id="books-read-{{ square_id }}"></div>
+                        <input type="text" name="author" class="author" placeholder="Author""><br>
+                        <input name="submit" type="submit" value="Submit" class="submit"">
+                        </div>
                     </form>
+                        <div class="books-read" id="books-read-{{ square_id }}"></div>
+                    </div>
                     {% endif %}
                 {% endif %}
             </td>
+            </div>
         {% endfor %}
         </tr>
     {% endfor %}
@@ -42,7 +45,9 @@
         console.log(result);
 
         $("#books-read-" + result.square_id).html(result.title + " by " + result.author);
-        $("#submit-" + result.square_id).attr('disabled', 'disabled');
+        $("#square-" + result.square_id).addClass("read");
+        $("#data-fields").hide();
+
 
     }
 
