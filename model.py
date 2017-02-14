@@ -66,7 +66,7 @@ class Board(db.Model):
                                      Genre.name)
 
         query_joins = query_fields.join(SquareUser, isouter=True).join(Book, isouter=True).join(Genre, isouter=True)
-        query_filters = query_joins.filter(Square.board_id==board_id, db.or_(SquareUser.user_id == user_id, SquareUser.user_id.is_(None)))
+        query_filters = query_joins.filter(Square.board_id==self.board_id, db.or_(SquareUser.user_id == user_id, SquareUser.user_id.is_(None)))
         query_order = query_filters.order_by(Square.square_id)
 
         query_results = query_order.all()

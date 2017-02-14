@@ -9,6 +9,9 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book, 
                    BookGenre, connect_to_db, db)
 
+from goodreads import (create_url, url_to_dict, get_title, get_author, 
+                        get_image_url, get_goodreads_id, get_description)
+
 from sqlalchemy.orm.exc import NoResultFound
 
 import json
@@ -20,6 +23,7 @@ app = Flask(__name__)
 app.secret_key = "ks3sn4kynsna87d6f5"
 
 app.jinja_env.undefined = StrictUndefined
+
 
 
 @app.route('/')
@@ -213,28 +217,16 @@ def display_board(board_id):
     this_board = Board.query.get(board_id)
     book_info = this_board.get_squares(user_id)
 
-    # query_fields = db.session.query(Square.square_id,
-    #                              Square.genre_id,
-    #                              Book.title,
-    #                              Book.author,
-    #                              SquareUser.user_id,
-    #                              Genre.name)
-
-    # query_joins = query_fields.join(SquareUser, isouter=True).join(Book, isouter=True).join(Genre, isouter=True)
-    # query_filters = query_joins.filter(Square.board_id==board_id, db.or_(SquareUser.user_id == user_id, SquareUser.user_id.is_(None)))
-    # query_order = query_filters.order_by(Square.square_id)
-
-    # query_results = query_order.all()
-
     # Splits all genres into rows of 5    
-    row1 = query_results[:5]
-    row2 = query_results[5:10]
-    row3 = query_results[10:15]
-    row4 = query_results[15:20]
-    row5 = query_results[20:]
+    row1 = book_info[:5]
+    row2 = book_info[5:10]
+    row3 = book_info[10:15]
+    row4 = book_info[15:20]
+    row5 = book_info[20:]
 
     # Creates lists of rows 
     board_rows = [row1, row2, row3, row4, row5]
+
 
     return render_template("board.html",
                             board_rows=board_rows)
@@ -282,12 +274,29 @@ def process_submission():
 
     db.session.commit()
 
+    # API Calls
+
+    book_url = create_url(title)
+
+    response_dict = url_to_dict(book_url)
+
+    book_title = get_title(response_dict)
+
+    book_author = get_author(response_dict)
+
+    book_image = get_image_url(response_dict)
+
+    goodreads_id = get_goodreads_id(response_dict)
+
+    book_description = get_description(goodreads_id)
+
 
     # Send data back to Ajax call success function 
 
     book_data = {'title': title, 
                 'square_id': square_id,
-                'author': author
+                'author': author,
+                'book_description': book_description
                 }
 
     return jsonify(book_data)
