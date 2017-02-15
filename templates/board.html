@@ -17,7 +17,7 @@
                     {% else %}
                     <div id="submission-form">
                     <form>
-                        <div id="data-fields">
+                        <div id="data-fields-{{ square_id }}">
                         <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square_id }}"><br>
                         <input type="text" name="author" class="author" placeholder="Author""><br>
                         <input name="submit" type="submit" value="Submit" class="submit"">
@@ -44,9 +44,14 @@
     function showTitle(result){
         console.log(result);
 
+
         $("#books-read-" + result.square_id).html(result.title + " by " + result.author);
         $("#square-" + result.square_id).addClass("read");
-        $("#data-fields").hide();
+        $("#data-fields-" + result.square_id).hide();
+
+        // debugger;
+
+        console.log('done!');
 
 
     }
