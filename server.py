@@ -12,7 +12,7 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 from goodreads import (create_url, url_to_dict, get_title, get_author, 
                         get_image_url, get_goodreads_id, get_description)
 
-from board import create_rows
+from board import (create_rows, create_genres, create_squares)
 
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -173,23 +173,12 @@ def create_board():
             genres_text.append("FREE SQUARE")
         genres_text.append(request.form.get("genre" + str(i+1)))
 
-    
-    # Instantiate genre objects
-    genre_objects = []
 
-    for genre_text in genres_text:
-        genre_objects.append(Genre(name=genre_text))
+    # Instantiate genre and square objects
 
+    genre_objects = create_genres(genres_text)
 
-    # Create squares
-    squares = []
-
-    coordinate_list = [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 1), (2, 2), 
-    (2, 3), (2, 4), (2, 5),(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (4, 1), 
-    (4, 2), (4, 3), (4, 4), (4, 5), (5, 1), (5, 2), (5, 3), (5, 4), (5, 5)]
-    
-    for coordinate in coordinate_list:
-        squares.append(Square(x_coord=coordinate[0], y_coord=coordinate[1]))
+    squares = create_squares()
 
 
     #Append squares to board and assign genres
