@@ -12,6 +12,8 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 from goodreads import (create_url, url_to_dict, get_title, get_author, 
                         get_image_url, get_goodreads_id, get_description)
 
+from board import create_rows
+
 from sqlalchemy.orm.exc import NoResultFound
 
 import json
@@ -217,15 +219,7 @@ def display_board(board_id):
     this_board = Board.query.get(board_id)
     book_info = this_board.get_squares(user_id)
 
-    # Splits all genres into rows of 5    
-    row1 = book_info[:5]
-    row2 = book_info[5:10]
-    row3 = book_info[10:15]
-    row4 = book_info[15:20]
-    row5 = book_info[20:]
-
-    # Creates lists of rows 
-    board_rows = [row1, row2, row3, row4, row5]
+    board_rows = create_rows(book_info)
 
 
     return render_template("board.html",
@@ -274,6 +268,7 @@ def process_submission():
 
     db.session.commit()
 
+
     # API Calls
 
     book_url = create_url(title)
@@ -282,13 +277,17 @@ def process_submission():
 
     book_title = get_title(response_dict)
 
-    book_author = get_author(response_dict)
+    if book_title  == None:
+        flash("Hmm, it doesn't look like that book is on GoodReads")
+    else:
 
-    book_image = get_image_url(response_dict)
+        book_author = get_author(response_dict)
 
-    goodreads_id = get_goodreads_id(response_dict)
+        book_image = get_image_url(response_dict)
 
-    book_description = get_description(goodreads_id)
+        goodreads_id = get_goodreads_id(response_dict)
+
+        book_description = get_description(goodreads_id)
 
 
     # Send data back to Ajax call success function 
