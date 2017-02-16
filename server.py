@@ -34,6 +34,12 @@ def index():
 
     return render_template("homepage.html")
 
+@app.route('/about')
+def about():
+    """About page"""
+
+    return render_template("about.html")
+
 
 @app.route('/login', methods=["GET"])
 def login_form():
@@ -128,11 +134,10 @@ def display_user(user_id):
     for board in user_boards:
         board_name = board.board_name
         board_id = board.board_id
-        boards.append(board_name)
+        boards.append((board_name, board_id))
 
     return render_template("user_details.html",
                     first_name=first_name,
-                    board_id=board_id,
                     boards=boards)
 
 

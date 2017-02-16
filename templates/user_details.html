@@ -9,9 +9,9 @@
 
     <h2>Your boards: </h2>
         <ul>
-      {% for board in boards %}
+      {% for board_name, board_id in boards %}
           <li>
-                <a href="/board/{{board_id}}"> {{ board }}
+                <a href="/board/{{board_id}}"> {{ board_name }}
           </li>
       {% endfor %}
       <br>

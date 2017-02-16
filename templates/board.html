@@ -9,7 +9,7 @@
     {% for row in board_rows %}
         <tr>
         {% for square_id, genre_id, title, author, user_id, genre_name in row %}
-            <td id="square-{{ square_id }}" {% if title %} class="read" {% endif %}> {{ genre_name }} <br>
+            <td id="square-{{ square_id }}" {% if title or genre_name == "FREE SQUARE" %} class="read" {% endif %}> {{ genre_name }} <br>
                 {% if genre_name != "FREE SQUARE" %}
                     {% if title %}
                         {{title}} by {{author}}

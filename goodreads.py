@@ -1,5 +1,3 @@
-# API Calls
-
 import os
 
 import requests
@@ -11,7 +9,7 @@ import urllib
 access_token = os.environ['GOODREADS_ACCESS_DEVELOPER_KEY']
 
 def create_url(title):
-    """Creates URL given book title"""
+    """Create URL given book title"""
 
     title = urllib.quote_plus(title)
 
@@ -21,7 +19,7 @@ def create_url(title):
 
 
 def url_to_dict(url):
-    """Creates dict from XML response"""
+    """Create dict from XML response"""
 
     result = requests.get(url)
 
@@ -32,27 +30,28 @@ def url_to_dict(url):
     return xmldict
 
 def get_title(xmldict):
-    """Gets book tile from XML Dict""" 
+    """Get book tile from XML dictionary""" 
 
     title = xmldict['GoodreadsResponse']['search']['results']['work'][0]['best_book']['title']
 
     return title
 
 def get_author(xmldict):
-    """Gets author name from XML Dict"""
+    """Get author name from XML dictionary"""
 
     author = xmldict['GoodreadsResponse']['search']['results']['work'][0]['best_book']['author']['name']
 
     return author
 
 def get_image_url(xmldict):
-    """Gets image URL From XML Dict"""
+    """Get image URL From XML dictionary"""
 
     image_url = xmldict['GoodreadsResponse']['search']['results']['work'][0]['best_book']['image_url']
 
     return image_url
 
 def get_goodreads_id(xmldict):
+    """Get Goodreads ID from XML dictionary"""
 
     goodreads_id = xmldict['GoodreadsResponse']['search']['results']['work'][0]['best_book']['id']['#text']
 
@@ -73,4 +72,3 @@ def get_description(goodreads_id):
     description = xmldict['GoodreadsResponse']['book']['description']
 
     return description 
-
