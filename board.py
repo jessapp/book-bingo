@@ -23,18 +23,3 @@ def create_squares():
         squares.append(Square(x_coord=coordinate[0], y_coord=coordinate[1]))
 
     return squares
-
-
-
-def create_rows(lst):
-    """Splits list of squares into list of rows - to be used with Jinja"""
-    row1 = lst[0]
-    row2 = lst[1]
-    row3 = lst[2]
-    row4 = lst[3]
-    row5 = lst[4]
-
-    # Creates lists of rows 
-    board_rows = [row1, row2, row3, row4, row5]
-
-    return board_rows

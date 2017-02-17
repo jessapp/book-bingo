@@ -12,7 +12,7 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 from goodreads import (create_url, url_to_dict, get_title, get_author, 
                         get_image_url, get_goodreads_id, get_description)
 
-from board import (create_rows, create_genres, create_squares)
+from board import (create_genres, create_squares)
 
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -212,8 +212,6 @@ def display_board(board_id):
 
     this_board = Board.query.get(board_id)
     board_rows = this_board.get_squares(user_id)
-
-    # board_rows = create_rows(book_info)
 
 
     return render_template("board.html",

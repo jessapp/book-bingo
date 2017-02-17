@@ -5,7 +5,7 @@ function showTitle(result){
     console.log(result);
 
 
-    $("#books-read-" + result.square_id).html(result.title + " by " + result.author);
+    $("#books-read-" + result.square_id).html("You read " + result.title + " by " + result.author);
     $("#square-" + result.square_id).addClass("read");
     $("#data-fields-" + result.square_id).hide();
 

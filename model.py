@@ -99,6 +99,7 @@ class Board(db.Model):
                 sq_info['square_id'] = square.square_id
                 sq_info['genre'] = square.genre.name
                 books_read = []
+                sq_info['current_user'] = False
                 for su in square.squareusers:
                     user_name = su.user.first_name
                     book_title = su.book.title
@@ -108,8 +109,6 @@ class Board(db.Model):
                     sq_info['books_read'] = books_read
                     if su_user_id == user_id:
                         sq_info['current_user'] = True
-                    else:
-                        sq_info['current_user'] = False
                 new_row.append(sq_info)
             query_results.append(new_row)
 
