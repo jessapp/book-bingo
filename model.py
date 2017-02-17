@@ -58,23 +58,62 @@ class Board(db.Model):
     def get_squares(self, user_id):
         """Run SQLAlchemy query to get board information"""
         
-        su_subquery = db.session.query(SquareUser).filter(SquareUser.user_id==user_id).subquery()
+        # su_subquery = db.session.query(SquareUser).filter(SquareUser.user_id==user_id).subquery()
 
-        su_alias = db.aliased(SquareUser, su_subquery)
+        # su_alias = db.aliased(SquareUser, su_subquery)
 
-        query_fields = db.session.query(Square.square_id,
-                                     Square.genre_id,
-                                     Book.title,
-                                     Book.author,
-                                     su_alias.user_id,
-                                     Genre.name)
+        # query_fields = db.session.query(Square.square_id,
+        #                              Square.genre_id,
+        #                              Book.title,
+        #                              Book.author,
+        #                              su_alias.user_id,
+        #                              Genre.name)
 
-        query_joins = query_fields.outerjoin(su_subquery).outerjoin(Book).outerjoin(Genre)
-        query_filters = query_joins.filter(Square.board_id==self.board_id)
-        query_order = query_filters.order_by(Square.square_id)
+        # query_joins = query_fields.outerjoin(su_subquery).outerjoin(Book).outerjoin(Genre)
+        # query_filters = query_joins.filter(Square.board_id==self.board_id)
+        # query_order = query_filters.order_by(Square.square_id)
 
-        query_results = query_order.all()
+        # query_results = query_order.all()
 
+
+        row_one = db.session.query(Square).filter(Square.board_id==self.board_id, Square.y_coord==1).all()
+
+        row_two = db.session.query(Square).filter(Square.board_id==self.board_id, Square.y_coord==2).all()
+
+        row_three = db.session.query(Square).filter(Square.board_id==self.board_id, Square.y_coord==3).all()
+
+        row_four = db.session.query(Square).filter(Square.board_id==self.board_id, Square.y_coord==4).all()
+
+        row_five = db.session.query(Square).filter(Square.board_id==self.board_id, Square.y_coord==5).all()
+
+        query_rows = [row_one, row_two, row_three, row_four, row_five]
+
+        # Make a list of five lists - each list has five dictionaries, one for each book 
+
+        query_results = []
+
+        for row in query_rows:
+            new_row = []
+            for square in row:
+                sq_info = {}
+                sq_info['square_id'] = square.square_id
+                sq_info['genre'] = square.genre.name
+                books_read = []
+                for su in square.squareusers:
+                    user_name = su.user.first_name
+                    book_title = su.book.title
+                    book_author = su.book.author
+                    su_user_id = su.user_id
+                    books_read.append((user_name, su_user_id, book_title, book_author))
+                    sq_info['books_read'] = books_read
+                    if su_user_id == user_id:
+                        sq_info['current_user'] = True
+                    else:
+                        sq_info['current_user'] = False
+                new_row.append(sq_info)
+            query_results.append(new_row)
+
+        
         return query_results
 
 

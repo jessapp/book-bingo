@@ -211,9 +211,9 @@ def display_board(board_id):
     user_id = session["user_id"]
 
     this_board = Board.query.get(board_id)
-    book_info = this_board.get_squares(user_id)
+    board_rows = this_board.get_squares(user_id)
 
-    board_rows = create_rows(book_info)
+    # board_rows = create_rows(book_info)
 
 
     return render_template("board.html",
@@ -282,6 +282,7 @@ def process_submission():
         goodreads_id = get_goodreads_id(response_dict)
 
         book_description = get_description(goodreads_id)
+
 
 
     # Send data back to Ajax call success function 

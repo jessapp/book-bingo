@@ -8,21 +8,29 @@
     <table style="width:100%" border="1">
     {% for row in board_rows %}
         <tr>
-        {% for square_id, genre_id, title, author, user_id, genre_name in row %}
-            <td id="square-{{ square_id }}" {% if title or genre_name == "FREE SQUARE" %} class="read" {% endif %}> {{ genre_name }} <br>
-                {% if genre_name != "FREE SQUARE" %}
-                    {% if title %}
-                        {{title}} by {{author}}
+        {% for square in row %}
+            <td id="square-{{ square['square_id'] }}" {% if square.get('current_user') == True or square['genre'] == "FREE SQUARE" %} class="read" {% endif %}> {{ square['genre'] }} <br>
+                {% if square['genre'] != "FREE SQUARE" %}
+                    {% if square.get('current_user') == True %}
+                        {% for book in square.get('books_read') %}
+                            {{ book[0] }} read {{ book[2] }} by {{ book[3] }}<br>
+                        {% endfor %}
                     {% else %}
                     <div id="submission-form">
                     <form>
-                        <div id="data-fields-{{ square_id }}">
-                        <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square_id }}"><br>
+                        <div id="data-fields-{{ square['square_id'] }}">
+                        <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square['square_id'] }}"><br>
                         <input type="text" name="author" class="author" placeholder="Author""><br>
                         <input name="submit" type="submit" value="Submit" class="submit"">
                         </div>
                     </form>
-                        <div class="books-read" id="books-read-{{ square_id }}"></div>
+                        <div class="other-books">
+                        {% if square.get('books_read') %}
+                            {% for book in square.get('books_read') %}
+                                {{ book[0] }} read {{ book[2] }} by {{ book[3] }}<br>
+                            {% endfor %}
+                        {% endif %}</div>
+                        <div class="books-read" id="books-read-{{ square['square_id'] }}"></div>
                     </div>
                     {% endif %}
                 {% endif %}

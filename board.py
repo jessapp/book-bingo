@@ -28,12 +28,11 @@ def create_squares():
 
 def create_rows(lst):
     """Splits list of squares into list of rows - to be used with Jinja"""
-
-    row1 = lst[:5]
-    row2 = lst[5:10]
-    row3 = lst[10:15]
-    row4 = lst[15:20]
-    row5 = lst[20:]
+    row1 = lst[0]
+    row2 = lst[1]
+    row3 = lst[2]
+    row4 = lst[3]
+    row5 = lst[4]
 
     # Creates lists of rows 
     board_rows = [row1, row2, row3, row4, row5]
