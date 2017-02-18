@@ -98,6 +98,8 @@ class Board(db.Model):
                 sq_info = {}
                 sq_info['square_id'] = square.square_id
                 sq_info['genre'] = square.genre.name
+                sq_info['x_coord'] = square.x_coord
+                sq_info['y_coord'] = square.y_coord
                 books_read = []
                 sq_info['current_user'] = False
                 for su in square.squareusers:

@@ -30,3 +30,14 @@ $(function() {
         )
   })    
 });
+
+// Create alert when a user gets 5 boxes in a row
+function getBingo() {
+
+    // If all squares with y_coord = 1 have the class read, alert 
+    if ($('*[data-ycoord='1']'.hasClass("read")) {
+        alert("Bingo!");
+    }
+}
+
+$(".submit").on("click", getBingo);
