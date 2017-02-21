@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Book Bingo</h1>
+<h1>Welcome to Book Bingo!</h1> <br>
 
-{% if 'user_id' in session %}
-<h2>Log Out</h2>
-<p><a href="/logout">Log Out Here</a></p> 
-
-{% else %}
+<h3>Log in or sign up to join this board and play with your friends!</h3><br>
 
   <div>
     <form action="/register">
@@ -20,8 +16,5 @@
         <input type="submit" value="Log In" />
     </form>
   </div>
-
-
-{% endif %}
 
 {% endblock %}

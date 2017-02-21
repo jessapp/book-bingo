@@ -50,7 +50,7 @@ function getBingo(x_coord, y_coord) {
         alert("Bingo!");
     };
 
-    // Alert left-right for diagonal 
+    // Alert left-right for diagonal bingo
 
     if (y_coord == 1 &&
         x_coord == 1 &&
@@ -104,7 +104,7 @@ function getBingo(x_coord, y_coord) {
 
 
 
-   // Alert right-left for diagonal 
+   // Alert right-left for diagonal bingo
 
        if (y_coord == 5 &&
         x_coord == 1 &&

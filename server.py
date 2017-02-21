@@ -65,10 +65,19 @@ def login_process():
 
     user_id = db.session.query(User).filter_by(email=email).one().user_id
 
+
     session['user_id'] = user_id
     flash("Logged in!")
 
-    return redirect("/users/" + str(user_id))
+    if 'board_id' in session:
+        board_id = session['board_id']
+        board = Board.query.get(board_id)
+        user = User.query.get(user_id)
+        board.users.append(user)
+        db.session.commit()
+        return redirect("/board/" + str(board_id))
+    else:
+        return redirect("/users/" + str(user_id))
 
 @app.route('/register', methods=["GET"])
 def register_form():
@@ -103,7 +112,15 @@ def register_process():
     session['user_id'] = user_id
     flash("Logged in!")
 
-    return redirect("/")
+    if 'board_id' in session:
+        board_id = session['board_id']
+        board = Board.query.get(board_id)
+        user = User.query.get(user_id)
+        board.users.append(user)
+        db.session.commit()
+        return redirect("/board/" + str(board_id))
+    else:
+        return redirect("/users/" + str(user_id))
 
 
 @app.route('/logout', methods=["GET"])
@@ -217,11 +234,14 @@ def display_board(board_id):
 
 
     return render_template("board.html",
-                            board_rows=board_rows)
+                            board_rows=board_rows,
+                            board_id=board_id)
+
 
 
 @app.route('/update-board.json', methods=["POST"])
 def process_submission():
+    """Processes Ajax call information to update board"""
 
     user_id = session["user_id"]
 
@@ -300,6 +320,17 @@ def process_submission():
                 }
 
     return jsonify(book_data)
+
+
+@app.route('/board/<board_id>/invite', methods=["GET"])
+def invite_friends(board_id):
+    """Landing page to invite new users to board"""
+
+    session['board_id'] = board_id
+
+    return render_template("board_invite.html")
+
+
 
 if __name__ == "__main__":
 

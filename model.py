@@ -57,24 +57,7 @@ class Board(db.Model):
 
     def get_squares(self, user_id):
         """Run SQLAlchemy query to get board information"""
-        
-        # su_subquery = db.session.query(SquareUser).filter(SquareUser.user_id==user_id).subquery()
-
-        # su_alias = db.aliased(SquareUser, su_subquery)
-
-        # query_fields = db.session.query(Square.square_id,
-        #                              Square.genre_id,
-        #                              Book.title,
-        #                              Book.author,
-        #                              su_alias.user_id,
-        #                              Genre.name)
-
-        # query_joins = query_fields.outerjoin(su_subquery).outerjoin(Book).outerjoin(Genre)
-        # query_filters = query_joins.filter(Square.board_id==self.board_id)
-        # query_order = query_filters.order_by(Square.square_id)
-
-        # query_results = query_order.all()
-
+    
 
         row_one = db.session.query(Square).filter(Square.board_id==self.board_id, Square.y_coord==1).all()
 
