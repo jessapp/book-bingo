@@ -11,8 +11,6 @@ function showTitle(result){
 
     var x_coord = result.x_coord;
     var y_coord = result.y_coord;
-    console.log(y_coord)
-    console.log(x_coord)
 
     getBingo(x_coord, y_coord);
 
@@ -45,13 +43,32 @@ $(function() {
 });
 
 
-// Create alert when a user gets 5 boxes in a row
 function getBingo(x_coord, y_coord) {
 
-    console.log(x_coord);
-    console.log(y_coord);
-
+    // Create alert when a user gets 5 boxes in a row
     if ($('.read[data-ycoord='+y_coord+']').length == 5 || $('.read[data-xcoord='+x_coord+']').length == 5) {
         alert("Bingo!");
     }
+
+    // Alert left-right for diagonal 
+
+    if ($('[data-ycoord=1][data-xcoord=1]').hasClass('read') && 
+        $('[data-ycoord=2][data-xcoord=2]').hasClass('read') &&
+        $('[data-ycoord=3][data-xcoord=3]').hasClass('read') && 
+        $('[data-ycoord=4][data-xcoord=4]').hasClass('read') && 
+        $('[data-ycoord=5][data-xcoord=5]').hasClass('read')) {
+        alert("Bingo!");
+    }
+
+   // Alert right-left for diagonal 
+
+    if ($('[data-ycoord=5][data-xcoord=1]').hasClass('read') && 
+        $('[data-ycoord=4][data-xcoord=2]').hasClass('read') &&
+        $('[data-ycoord=3][data-xcoord=3]').hasClass('read') && 
+        $('[data-ycoord=1][data-xcoord=4]').hasClass('read') && 
+        $('[data-ycoord=1][data-xcoord=5]').hasClass('read')) {
+        alert("Bingo!");
+    }
+
+
 };
