@@ -16,14 +16,14 @@ function showTitle(result){
 
 }
 
-// Ajax call - to do: refactor for optimized runtime
+// Ajax call
 $(function() {
   $(".submit").on("click", function(event) {
     event.preventDefault();
     var book = $(this).siblings(".book");
     var author = $(this).siblings(".author");
-    var y_coord = $(this).closest('td').data('ycoord');
-    var x_coord = $(this).closest('td').data('xcoord');
+    var y_coord = $(this).data('ycoord')
+    var x_coord = $(this).data('xcoord')
 
 
     var formInputs = {
