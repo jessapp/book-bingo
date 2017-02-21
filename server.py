@@ -98,6 +98,8 @@ def register_process():
 
     db.session.commit()
 
+    user_id = db.session.query(User).filter_by(email=email).one().user_id
+
     session['user_id'] = user_id
     flash("Logged in!")
 
