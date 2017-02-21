@@ -11,14 +11,6 @@
 
 <body>
 
-  {% with messages = get_flashed_messages() %}
-   {% if messages %}
-      {% for message in messages %}
-         {{ message }}
-      {% endfor %}
-    {% endif %}
-    {% endwith %}
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,6 +38,14 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+  {% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
 
   {% block content %} 
   {% endblock %}

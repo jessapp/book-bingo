@@ -233,6 +233,10 @@ def process_submission():
 
     author = request.form.get("author")
 
+    x_coord = request.form.get("x_coord")
+
+    y_coord = request.form.get("y_coord")
+
     genre_id = db.session.query(Square).filter_by(square_id=square_id).one().genre_id
 
     genre_object = Genre.query.get(genre_id)
@@ -288,7 +292,9 @@ def process_submission():
     book_data = {'title': title, 
                 'square_id': square_id,
                 'author': author,
-                'book_description': book_description
+                'book_description': book_description,
+                'x_coord': x_coord,
+                'y_coord': y_coord
                 }
 
     return jsonify(book_data)
