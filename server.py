@@ -9,10 +9,9 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book, 
                    BookGenre, connect_to_db, db)
 
-from goodreads import (create_url, url_to_dict, get_title, get_author, 
-                        get_image_url, get_goodreads_id, get_description)
-
-from board import (create_genres, create_squares)
+from board import (user_login, register_new_user, get_user_boards, create_new_board,
+                    add_user_to_board,create_genres, create_squares, 
+                    update_database, connect_to_goodreads)
 
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -52,22 +51,24 @@ def login_form():
 def login_process():
     """Execute login process"""
 
-    email = request.form.get("email")
+    # email = request.form.get("email")
 
-    password = request.form.get("password")
+    # password = request.form.get("password")
 
-    try:
-        db.session.query(User).filter_by(email=email).one().email
-        password == db.session.query(User).filter_by(email=email).one().password
-    except NoResultFound:
-        flash("Login information inccorect")
-        return redirect("/login")
+    # try:
+    #     db.session.query(User).filter_by(email=email).one().email
+    #     password == db.session.query(User).filter_by(email=email).one().password
+    # except NoResultFound:
+    #     flash("Login information inccorect")
+    #     return redirect("/login")
 
-    user_id = db.session.query(User).filter_by(email=email).one().user_id
+    # user_id = db.session.query(User).filter_by(email=email).one().user_id
 
 
-    session['user_id'] = user_id
-    flash("Logged in!")
+    # session['user_id'] = user_id
+    # flash("Logged in!")
+
+    user_id = user_login()
 
     if 'board_id' in session:
         board_id = session['board_id']
@@ -75,6 +76,7 @@ def login_process():
         user = User.query.get(user_id)
         board.users.append(user)
         db.session.commit()
+        del session['board_id']
         return redirect("/board/" + str(board_id))
     else:
         return redirect("/users/" + str(user_id))
@@ -90,27 +92,7 @@ def register_form():
 def register_process():
     """Add new user to database"""
 
-    email = request.form.get("email")
-
-    password = request.form.get("password")
-
-    first_name = request.form.get("f-name")
-
-    last_name = request.form.get("l-name")
-
-    new_user = User(email=email,
-                    password=password,
-                    first_name=first_name,
-                    last_name=last_name)
-
-    db.session.add(new_user)
-
-    db.session.commit()
-
-    user_id = db.session.query(User).filter_by(email=email).one().user_id
-
-    session['user_id'] = user_id
-    flash("Logged in!")
+    user_id = register_new_user()
 
     if 'board_id' in session:
         board_id = session['board_id']
@@ -118,6 +100,7 @@ def register_process():
         user = User.query.get(user_id)
         board.users.append(user)
         db.session.commit()
+        del session['board_id']
         return redirect("/board/" + str(board_id))
     else:
         return redirect("/users/" + str(user_id))
@@ -135,6 +118,7 @@ def logout_complete():
     """Implement user logout"""
 
     del session["user_id"]
+
     flash("Logged out!")
 
     return redirect("/")
@@ -146,14 +130,7 @@ def display_user(user_id):
 
     first_name = db.session.query(User).filter_by(user_id=user_id).one().first_name
 
-    user_boards = db.session.query(User).filter_by(user_id=user_id).one().boards 
-
-    boards = []
-
-    for board in user_boards:
-        board_name = board.board_name
-        board_id = board.board_id
-        boards.append((board_name, board_id))
+    boards = get_user_boards(user_id)
 
     return render_template("user_details.html",
                     first_name=first_name,
@@ -175,43 +152,17 @@ def board_form():
 def create_board():
     """Populates the board with user data and redirects the user to it"""
 
-    #get user_id from the session
-    user_id = session["user_id"]
+    # Create new board
+    new_board = create_new_board()
 
-    #get user object
-    user = User.query.get(user_id)
-
-    # Initialize new board object
-    board_name = request.form.get("board-name")
-
-    new_board = Board(board_name=board_name)
-
-    # Append user to board 
-    new_board.users.append(user)
-
-    # Get board genres from HTML Form
-    genres_text = []
-
-    for i in range(25):
-        if i == 12:
-            genres_text.append("FREE SQUARE")
-        genres_text.append(request.form.get("genre" + str(i+1)))
+    # Add user and genres
+    genres_text = add_user_to_board(new_board)
 
 
     # Instantiate genre and square objects
-
     genre_objects = create_genres(genres_text)
+    squares = create_squares(new_board, genre_objects)
 
-    squares = create_squares()
-
-
-    #Append squares to board and assign genres
-
-    for i in range(len(squares)):
-        square = squares[i]
-        genre_object = genre_objects[i]
-        square.genre = genre_object
-        new_board.squares.append(square) 
     
     db.session.add(new_board)
     db.session.commit()
@@ -243,81 +194,14 @@ def display_board(board_id):
 def process_submission():
     """Processes Ajax call information to update board"""
 
-    user_id = session["user_id"]
-
-    user_object = User.query.get(user_id)
-
-    square_id = request.form.get("square_id")
-
-    square_object = Square.query.get(square_id)
-
-    title = request.form.get("book")
-
-    author = request.form.get("author")
-
-    x_coord = request.form.get("x_coord")
-
-    y_coord = request.form.get("y_coord")
-
-    genre_id = db.session.query(Square).filter_by(square_id=square_id).one().genre_id
-
-    genre_object = Genre.query.get(genre_id)
-
-    board_id = db.session.query(Square).filter_by(square_id=square_id).one().board_id
-
-
-    print "Book title %s Author %s Square_ID %s User %s Genre ID %s Board ID %s" % (title, author, square_id, user_id, genre_id, board_id)
-
-
-    # Add new book to the DB
-
-    new_book = Book(title=title, author=author)
-    new_book.genres.append(genre_object)
-
-    # Bring user, book, and square together in DB
-
-    new_Sqaureuser = SquareUser()
-
-    new_Sqaureuser.user = user_object
-    new_Sqaureuser.square = square_object
-    new_Sqaureuser.book = new_book
-
-    db.session.add(new_Sqaureuser)
-
-    db.session.commit()
+    
+    # Update the database with information from the board
+    new_Sqaureuser = update_database()
 
 
     # API Calls
+    book_data = connect_to_goodreads()
 
-    book_url = create_url(title)
-
-    response_dict = url_to_dict(book_url)
-
-    book_title = get_title(response_dict)
-
-    if book_title  == None:
-        flash("Hmm, it doesn't look like that book is on GoodReads")
-    else:
-
-        book_author = get_author(response_dict)
-
-        book_image = get_image_url(response_dict)
-
-        goodreads_id = get_goodreads_id(response_dict)
-
-        book_description = get_description(goodreads_id)
-
-
-
-    # Send data back to Ajax call success function 
-
-    book_data = {'title': title, 
-                'square_id': square_id,
-                'author': author,
-                'book_description': book_description,
-                'x_coord': x_coord,
-                'y_coord': y_coord
-                }
 
     return jsonify(book_data)
 
