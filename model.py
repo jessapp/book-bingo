@@ -217,31 +217,29 @@ class BookGenre(db.Model):
 
 # Helper functions
 
-def connect_to_db(app):
+def connect_to_db(app, db_url='postgresql:///bookbingo'):
     """Connect the database to the Flask app."""
 
     # Configure to use our PstgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///bookbingo'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
     db.app = app
     db.init_app(app) 
 
 def example_data():
     """Create example data to test the database"""
 
-    u1 = User(email='fake@email.com', password='password', first_name='Al', last_name='Books')
-    u2 = User(email='anotherfake@email.com', password='password2', first_name='Ballooincorn', 
-              last_name='Jones')
+    u1 = User(email='fake@email.com', password='secretpassword', first_name='Jess', last_name='Books')
+    u2 = User(email='slayer@sunnydale.com', password='123', first_name='Buffy', 
+              last_name='Summers')
 
     board1 = Board(board_name="My Board")
-    board2 = Board(board_name="Reading")
-    #board3 = Board(board_name="Populated Example")
+    board2 = Board(board_name="Bingo 2017")
 
     board1.users.append(u1)
-    board2.users.append(u2)
-    #board3.users.append(u1)
+    board1.users.append(u2)
 
-    book1 = Book(title="This Book", author="Jane Austen")
-    book2 = Book(title="Another Book", author="Terry Pratchett")
+    book1 = Book(title="Pride and Prejudice", author="Jane Austen")
+    book2 = Book(title="Mort", author="Terry Pratchett")
 
     genre1 = Genre(name="Romance")
     genre2 = Genre(name="Fantasy")
@@ -251,12 +249,10 @@ def example_data():
 
     square1 = Square(x_coord=1, y_coord=1)
     square2 = Square(x_coord=1, y_coord=2)
-    #square1 = Square(x_coord=1, y_coord=1)
-    #board3.squares.append(square1)
-    #etc
+
 
     board1.squares.append(square1)
-    board2.squares.append(square2)
+    board1.squares.append(square2)
 
     square1.genre = genre1
     square2.genre = genre2

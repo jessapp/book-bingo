@@ -166,10 +166,6 @@ def update_database():
 
     board_id = db.session.query(Square).filter_by(square_id=square_id).one().board_id
 
-
-    print "Book title %s Author %s Square_ID %s User %s Genre ID %s Board ID %s" % (title, author, square_id, user_id, genre_id, board_id)
-
-
     # Add new book to the DB
 
     new_book = Book(title=title, author=author)
@@ -187,7 +183,8 @@ def update_database():
 
     db.session.commit()
 
-    return new_Sqaureuser
+    print "Commit: Book title %s Author %s Square_ID %s User %s Genre ID %s Board ID %s" % (title, author, square_id, user_id, genre_id, board_id)
+
 
 
 def connect_to_goodreads():

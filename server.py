@@ -51,23 +51,6 @@ def login_form():
 def login_process():
     """Execute login process"""
 
-    # email = request.form.get("email")
-
-    # password = request.form.get("password")
-
-    # try:
-    #     db.session.query(User).filter_by(email=email).one().email
-    #     password == db.session.query(User).filter_by(email=email).one().password
-    # except NoResultFound:
-    #     flash("Login information inccorect")
-    #     return redirect("/login")
-
-    # user_id = db.session.query(User).filter_by(email=email).one().user_id
-
-
-    # session['user_id'] = user_id
-    # flash("Logged in!")
-
     user_id = user_login()
 
     if 'board_id' in session:
@@ -133,8 +116,8 @@ def display_user(user_id):
     boards = get_user_boards(user_id)
 
     return render_template("user_details.html",
-                    first_name=first_name,
-                    boards=boards)
+                            first_name=first_name,
+                            boards=boards)
 
 
 @app.route('/create-board', methods=["GET"])
@@ -196,7 +179,7 @@ def process_submission():
 
     
     # Update the database with information from the board
-    new_Sqaureuser = update_database()
+    update_database()
 
 
     # API Calls
