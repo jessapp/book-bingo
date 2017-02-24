@@ -127,7 +127,7 @@ def board_form():
     if "user_id" in session:
         return render_template('new_board.html')
     else:
-        flash("Please log in to create a board.")
+        flash("Please log in to create a board!")
         return redirect("/login")
 
 
@@ -161,16 +161,21 @@ def create_board():
 def display_board(board_id):
     """Displays bingo board using information from database"""
 
-    user_id = session["user_id"]
+    if 'user_id' not in session:
+        flash("Please log in to view boards!")
+        return redirect("/login")
+    else: 
+        user_id = session["user_id"]
 
-    this_board = Board.query.get(board_id)
-    board_rows = this_board.get_squares(user_id)
+        this_board = Board.query.get(board_id)
+        board_rows = this_board.get_squares(user_id)
+        board_name = Board.query.get(board_id).board_name
 
 
-    return render_template("board.html",
-                            board_rows=board_rows,
-                            board_id=board_id)
-
+        return render_template("board.html",
+                                board_rows=board_rows,
+                                board_id=board_id,
+                                board_name=board_name)
 
 
 @app.route('/update-board.json', methods=["POST"])
@@ -194,7 +199,6 @@ def invite_friends(board_id):
     """Landing page to invite new users to board"""
 
     session['board_id'] = board_id
-
     return render_template("board_invite.html")
 
 

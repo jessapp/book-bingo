@@ -3,37 +3,67 @@
 
 <script src="/static/js/board.js"></script>
 
+
 <div id="board">
-    <h1>Book Bingo!</h1>
+    <h1>{{ board_name }}</h1>
     <table style="width:100%" border="1">
     {% for row in board_rows %}
         <tr>
         {% for square in row %}
-            <td id="square-{{ square['square_id'] }}" data-xcoord="{{ square['x_coord'] }}" data-ycoord="{{ square['y_coord'] }}"{% if square.get('current_user') == True or square['genre'] == "FREE SQUARE" %} class="read" {% endif %}> {{ square['genre'] }} <br>
-                {% if square['genre'] != "FREE SQUARE" %}
-                    {% if square.get('current_user') == True %}
-                        {% for book in square.get('books_read') %}
-                            {{ book[0] }} read {{ book[2] }} by {{ book[3] }}<br>
-                        {% endfor %}
-                    {% else %}
-                    <div id="submission-form" class="submission-form">
-                    <form>
-                        <div id="data-fields-{{ square['square_id'] }}">
-                        <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square['square_id'] }}" required><br>
-                        <input type="text" name="author" class="author" placeholder="Author" required><br>
-                        <input name="submit" type="submit" value="Submit" class="submit">
-                        </div>
-                    </form>
-                        <div class="other-books">
-                        {% if square.get('books_read') %}
-                            {% for book in square.get('books_read') %}
-                                {{ book[0] }} read {{ book[2] }} by {{ book[3] }}<br>
-                            {% endfor %}
-                        {% endif %}</div>
-                        <div class="books-read" id="books-read-{{ square['square_id'] }}"></div>
+            <td id="square-{{ square['square_id'] }}" data-square="square {{square['square_id']}}" data-xcoord="{{ square['x_coord'] }}" data-ycoord="{{ square['y_coord'] }}"{% if square.get('current_user') == True or square['genre'] == "FREE SQUARE" %} class="read" {% endif %}> {{ square['genre'] }} <br>
+              {% if square['genre'] != "FREE SQUARE" %}
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong-{{ square['square_id'] }}">
+                  Explore This Genre
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong-{{ square['square_id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{ square['genre'] }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        
+                          {% if square.get('current_user') == True %}
+                              {% for book in square.get('books_read') %}
+                                  {{ book[0] }} read {{ book[2] }} by {{ book[3] }}:<br>
+                              {% endfor %}
+                          {% else %}
+                          <div id="submission-form" class="submission-form">
+                          <form>
+                              <div id="data-fields-{{ square['square_id'] }}">
+                              <input name="title" type="text" class="book" placeholder="Book Title" data-square-id="{{ square['square_id'] }}" required><br>
+                              <input type="text" name="author" class="author" placeholder="Author" required><br>
+                              <input name="submit" type="submit" value="Submit" class="submit">
+                              </div>
+                          </form>
+                              <div class="other-books">
+                              {% if square.get('books_read') %}
+                                  {% for book in square.get('books_read') %}
+                                      {{ book[0] }} read {{ book[2] }} by {{ book[3] }}<br>
+                                  {% endfor %}
+                              {% endif %}</div>
+                              <div class="books-read" id="books-read-{{ square['square_id'] }}"></div>
+                          </div>
+                          {% endif %}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back To Board</button>
+                      </div>
                     </div>
-                    {% endif %}
-                {% endif %}
+                  </div>
+                </div>
+
+<!-- End of board loop -->
+
+            {% endif %}
             </td>
             </div>
         {% endfor %}
@@ -42,6 +72,8 @@
     </table>
 </div>
 
+<!-- Share Link -->
+
 <div>
     <h3>Play with friends!</h3><br>
     <p>Copy this link and send it to your friends to invite them to share this
@@ -49,6 +81,5 @@
     <p>http://localhost:5000/board/{{ board_id }}/invite</p>
 
 </div>
-
 
 {% endblock %}

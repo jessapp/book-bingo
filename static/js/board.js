@@ -4,7 +4,6 @@
 function showTitle(result){
     console.log(result);
 
-
     $("#books-read-" + result.square_id).html("You read " + result.title + " by " + result.author);
     $("#square-" + result.square_id).addClass("read");
     $("#data-fields-" + result.square_id).hide();
@@ -13,8 +12,8 @@ function showTitle(result){
     var y_coord = result.y_coord;
 
     getBingo(x_coord, y_coord);
-
 }
+
 
 // Ajax call
 $(function() {
@@ -23,7 +22,7 @@ $(function() {
     var book = $(this).siblings(".book");
     var author = $(this).siblings(".author");
     var y_coord = $(this).closest('td').data('ycoord');
-    var x_coord = $(this).closest('td').data('xcoord');     
+    var x_coord = $(this).closest('td').data('xcoord');   
 
 
     var formInputs = {
@@ -157,3 +156,10 @@ function getBingo(x_coord, y_coord) {
     };
 
 };
+
+    // Modal
+    function modal(evt) {
+        $('#exampleModalLong').modal('show');
+    }
+
+modal();
