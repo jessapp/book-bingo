@@ -6,6 +6,8 @@ import xmltodict
 
 import urllib
 
+import re
+
 access_token = os.environ['GOODREADS_ACCESS_DEVELOPER_KEY']
 
 def create_url(title):
@@ -71,4 +73,9 @@ def get_description(goodreads_id):
 
     description = xmldict['GoodreadsResponse']['book']['description']
 
-    return description 
+    cleanr = re.compile('<.*?>')
+
+    cleantext = re.sub(cleanr, '', description)
+
+
+    return cleantext 

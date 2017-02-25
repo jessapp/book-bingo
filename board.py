@@ -171,6 +171,23 @@ def update_database():
     new_book = Book(title=title, author=author)
     new_book.genres.append(genre_object)
 
+
+    book_url = create_url(title)
+
+    response_dict = url_to_dict(book_url)
+
+    book_image = get_image_url(response_dict)
+
+    goodreads_id = get_goodreads_id(response_dict)
+
+    book_description = get_description(goodreads_id)
+
+    new_book.goodreads_id = goodreads_id
+
+    new_book.image_url = book_image
+
+    new_book.description = book_description
+
     # Bring user, book, and square together in DB
 
     new_Sqaureuser = SquareUser()

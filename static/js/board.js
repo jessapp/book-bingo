@@ -157,7 +157,7 @@ function getBingo(x_coord, y_coord) {
 
 };
 
-    // Modal
+    // Modals
     function modal(evt) {
         $('#exampleModalLong').modal('show');
     }

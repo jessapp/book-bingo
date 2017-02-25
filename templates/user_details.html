@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1> Welcome, {{first_name}}! </h1>
+<h1> Welcome, {{first_name}}! </h1> <br>
 
     <form action="/create-board">
         <input type="submit" value="Create A New Board" />
-    </form>
+    </form><br>
 
+    {% if boards %}
     <h2>Your boards: </h2>
         <ul>
       {% for board_name, board_id in boards %}
@@ -15,5 +16,8 @@
           </li>
       {% endfor %}
       <br>
+      {% else %}
+      <p>You have no boards yet! Create a board to get started.</p>
+      {% endif %}
 
 {% endblock %}

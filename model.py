@@ -1,7 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 
-from goodreads import create_url, url_to_dict, get_goodreads_id, get_description
-
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -91,13 +89,9 @@ class Board(db.Model):
                     user_name = su.user.first_name
                     book_title = su.book.title
                     book_author = su.book.author
+                    description = su.book.description
                     su_user_id = su.user_id
-                    book_url = create_url(book_title)
-                    if book_url:
-                        xmldict = url_to_dict(book_url)
-                        book_id = get_goodreads_id(xmldict)
-                        book_description = get_description(book_id)
-                    books_read.append((user_name, su_user_id, book_title, book_author, book_description))
+                    books_read.append((user_name, su_user_id, book_title, book_author, description))
                     sq_info['books_read'] = books_read
                     if su_user_id == user_id:
                         sq_info['current_user'] = True
@@ -190,6 +184,9 @@ class Book(db.Model):
     book_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     title = db.Column(db.String(64))
     author = db.Column(db.String(64))
+    goodreads_id = db.Column(db.String(64))
+    image_url = db.Column(db.String(300))
+    description = db.Column(db.String(2000))
 
     genres = db.relationship("Genre", secondary="bookgenres", backref="books")
 
