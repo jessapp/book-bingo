@@ -7,6 +7,8 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 from goodreads import (create_url, url_to_dict, get_title, get_author, 
                         get_image_url, get_goodreads_id, get_description)
 
+from sqlalchemy.orm.exc import NoResultFound
+
 
 def register_new_user():
     """Add new user to database"""
@@ -166,27 +168,29 @@ def update_database():
 
     board_id = db.session.query(Square).filter_by(square_id=square_id).one().board_id
 
-    # Add new book to the DB
+    # Add new book to the DB, if it does not already exist in the DB
 
-    new_book = Book(title=title, author=author)
-    new_book.genres.append(genre_object)
+    try:
+        new_book = db.session.query(Book).filter_by(title=title, author=author).one()
+    except NoResultFound:
+        new_book = Book(title=title, author=author)
+        new_book.genres.append(genre_object)
 
+        book_url = create_url(title)
 
-    book_url = create_url(title)
+        response_dict = url_to_dict(book_url)
 
-    response_dict = url_to_dict(book_url)
+        book_image = get_image_url(response_dict)
 
-    book_image = get_image_url(response_dict)
+        goodreads_id = get_goodreads_id(response_dict)
 
-    goodreads_id = get_goodreads_id(response_dict)
+        book_description = get_description(goodreads_id)
 
-    book_description = get_description(goodreads_id)
+        new_book.goodreads_id = goodreads_id
 
-    new_book.goodreads_id = goodreads_id
+        new_book.image_url = book_image
 
-    new_book.image_url = book_image
-
-    new_book.description = book_description
+        new_book.description = book_description
 
     # Bring user, book, and square together in DB
 
@@ -200,7 +204,7 @@ def update_database():
 
     db.session.commit()
 
-    print "Commit: Book title %s Author %s Square_ID %s User %s Genre ID %s Board ID %s" % (title, author, square_id, user_id, genre_id, board_id)
+    print "Commit: Book title %s Author %s Square_ID %s Board ID %s" % (title, author, square_id, board_id)
 
 
 
@@ -225,19 +229,13 @@ def connect_to_goodreads():
 
         book_image = get_image_url(response_dict)
 
-        goodreads_id = get_goodreads_id(response_dict)
-
-        book_description = get_description(goodreads_id)
-
-
 
     # Send data back to Ajax call success function 
 
     book_data = {'title': title, 
                 'square_id': square_id,
                 'author': author,
-                'book_description': book_description,
-                'book_image':book_image,
+                'book_image': book_image,
                 'x_coord': x_coord,
                 'y_coord': y_coord
                 }

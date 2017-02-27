@@ -49,117 +49,41 @@ function getBingo(x_coord, y_coord) {
         alert("Bingo!");
     };
 
-    // Alert left-right for diagonal bingo
 
-    if (y_coord == 1 &&
-        x_coord == 1 &&
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") &&
-        $('[data-ycoord=2][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord=4][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord=5][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
+    // Alert for left-right diagonal bingo
+
+    if (x_coord === y_coord) {
+        var counter = 0;
+        for (var i = 1; i <= 5; i++) {
+            if ($('[data-ycoord=' + i + '][data-xcoord=' + i + ']').hasClass('read') === true) {
+                counter += 1;
+            }
+        }
+        if (counter === 5) {
+            alert("Bingo!");
+        }
     };
 
-    if (y_coord == 2 &&
-        x_coord == 2 &&
-        $('[data-ycoord=1][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord=4][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord=5][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
-    };
+    // Alert for right-left diagonal bingo
 
-    if (y_coord == 3 &&
-        x_coord == 3 &&
-        $('[data-ycoord=1][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord=2][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") && 
-        $('[data-ycoord=4][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord=5][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
-    };
+    if (parseInt(x_coord) + parseInt(y_coord) === 6) {
+            var new_counter = 0;
+            for (var i = 1; i <= 5; i++) {
+                if ($('[data-ycoord=' + (6 - i) + '][data-xcoord=' + i + ']').hasClass('read') === true) {
+                    new_counter += 1;
+                    }
+                }
 
-    if (y_coord == 4 &&
-        x_coord == 4 &&
-        $('[data-ycoord=1][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord=2][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") && 
-        $('[data-ycoord=5][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
-    };
-
-    if (y_coord == 5 &&
-        x_coord == 5 &&
-        $('[data-ycoord=1][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord=2][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord=4][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read")) {
-        alert("Bingo!");
-    };
-
-
-
-   // Alert right-left for diagonal bingo
-
-       if (y_coord == 5 &&
-        x_coord == 1 &&
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") &&
-        $('[data-ycoord=4][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord=2][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord=1][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
-    };
-
-    if (y_coord == 4 &&
-        x_coord == 2 &&
-        $('[data-ycoord=5][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord=2][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord=1][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
-    };
-
-    if (y_coord == 3 &&
-        x_coord == 3 &&
-        $('[data-ycoord=5][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord=4][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") && 
-        $('[data-ycoord=2][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord=1][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
-    };
-
-    if (y_coord == 2 &&
-        x_coord == 4 &&
-        $('[data-ycoord=5][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord=4][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read") && 
-        $('[data-ycoord=1][data-xcoord=5]').hasClass("read")) {
-        alert("Bingo!");
-    };
-
-    if (y_coord == 1 &&
-        x_coord == 5 &&
-        $('[data-ycoord=5][data-xcoord=1]').hasClass("read") &&
-        $('[data-ycoord=4][data-xcoord=2]').hasClass("read") &&
-        $('[data-ycoord=3][data-xcoord=3]').hasClass("read") && 
-        $('[data-ycoord=2][data-xcoord=4]').hasClass("read") && 
-        $('[data-ycoord='+y_coord+'][data-xcoord='+x_coord+']').hasClass("read")) {
-        alert("Bingo!");
-    };
-
+            if (new_counter === 5) {
+            alert("Bingo!");
+            }
+        };
 };
 
-    // Modals
-    function modal(evt) {
-        $('#exampleModalLong').modal('show');
+
+// Modals
+function modal(evt) {
+    $('#exampleModalLong').modal('show');
     }
 
 modal();

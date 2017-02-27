@@ -33,8 +33,8 @@
                         
                           {% if square.get('current_user') == True %}
                               {% for book in square.get('books_read') %}
-                                  {{ book[0] }} read {{ book[2] }} by {{ book[3] }}:<br>
-                                  {{ book[4] }}
+                                  <strong>{{ book[0] }} read {{ book[2] }} by {{ book[3] }}:</strong><br>
+                                  {{ book[4] }} <br>
                               {% endfor %}
                           {% else %}
                           <div id="submission-form" class="submission-form">
@@ -46,12 +46,14 @@
                               </div>
                           </form>
                               <div class="other-books">
+                              <div class="books-read" id="books-read-{{ square['square_id'] }}"></div>
                               {% if square.get('books_read') %}
+                                <p>Here's what your friends have read:</p>
                                   {% for book in square.get('books_read') %}
-                                      {{ book[0] }} read {{ book[2] }} by {{ book[3] }}<br>
+                                      <strong>{{ book[0] }} read {{ book[2] }} by {{ book[3] }}:</strong><br>
+                                      {{ book[4] }} <br>
                                   {% endfor %}
                               {% endif %}</div>
-                              <div class="books-read" id="books-read-{{ square['square_id'] }}"></div>
                           </div>
                           {% endif %}
                       </div>
