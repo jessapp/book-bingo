@@ -5,3 +5,8 @@ h1 {
 .read {
     background-color: #98fb98
 }
+
+.btn-success {
+    background-color: #9370DB;
+    border-color: #9370DB;
+}

@@ -41,12 +41,16 @@ $(function() {
   })    
 });
 
-
+// Checks if a user just got bingo 
 function getBingo(x_coord, y_coord) {
 
     // Create alert when a user gets 5 boxes in a row
     if ($('.read[data-ycoord='+y_coord+']').length == 5 || $('.read[data-xcoord='+x_coord+']').length == 5) {
-        alert("Bingo!");
+        $.alert({
+            title: 'Bingo!',
+            icon: 'glyphicon glyphicon-book',
+            content: 'You got five in a row!',
+            type: 'purple'});
     };
 
 
@@ -60,7 +64,11 @@ function getBingo(x_coord, y_coord) {
             }
         }
         if (counter === 5) {
-            alert("Bingo!");
+            $.alert({
+            title: 'Bingo!',
+            icon: 'glyphicon glyphicon-book',
+            content: 'You got five in a row!',
+            type: 'purple'});
         }
     };
 
@@ -75,7 +83,11 @@ function getBingo(x_coord, y_coord) {
                 }
 
             if (new_counter === 5) {
-            alert("Bingo!");
+            $.alert({
+            title: 'Bingo!',
+            icon: 'glyphicon glyphicon-book',
+            content: 'You got five in a row!',
+            type: 'purple'});
             }
         };
 };
