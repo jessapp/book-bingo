@@ -1,27 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Book Bingo</h1>
 
-{% if 'user_id' in session %}
-<h2>Log Out</h2>
-<p><a href="/logout">Log Out Here</a></p> 
+<div class="container-fluid">
+<div class="jumbotron jumbotron-fluid">
+  <h1 class="text-center">Book Bingo</h1>
+  <p class="text-center">Log in or sign up to get started!</p>
+    <p class="text-center"><a class="btn btn-primary btn-lg homepage-button" href="/login" role="button">Log In</a>
+    <a class="btn btn-primary btn-lg homepage-button" href="/register" role="button">Sign Up</a>
+</div>
+</div>
 
-{% else %}
-
-  <div>
-    <form action="/register">
-        <input type="submit" value="Sign Up" />
-    </form>
-  </div><br>
-
-  <div>
-    <form action="/login">
-        <input type="submit" value="Log In" />
-    </form>
-  </div>
-
-
-{% endif %}
 
 {% endblock %}

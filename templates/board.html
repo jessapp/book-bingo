@@ -3,10 +3,9 @@
 
 <script src="/static/js/board.js"></script>
 
-
 <div id="board">
     <h1>{{ board_name }}</h1>
-    <table style="width:100%" border="1">
+    <table border=1>
     {% for row in board_rows %}
         <tr>
         {% for square in row %}
@@ -42,7 +41,7 @@
                               <div id="data-fields-{{ square['square_id'] }}">
                               <input name="title" type="text" class="book form-control" placeholder="Book Title" data-square-id="{{ square['square_id'] }}" required><br>
                               <input type="text" name="author" class="form-control" placeholder="Author" required><br>
-                              <button type="button" class="btn btn-success">Submit</button>
+                              <button type="button" class="submit btn btn-success">Submit</button>
                               </div>
                           </form>
                               <div class="other-books">
