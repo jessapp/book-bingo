@@ -81,7 +81,7 @@ function getBingo(x_coord, y_coord) {
 };
 
 
-// Modals
+// Activate modals
 function modal(evt) {
     $('#exampleModalLong').modal('show');
     }

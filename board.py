@@ -180,9 +180,9 @@ def update_database():
 
         response_dict = url_to_dict(book_url)
 
-        book_image = get_image_url(response_dict)
-
         goodreads_id = get_goodreads_id(response_dict)
+
+        book_image = get_image_url(response_dict)
 
         book_description = get_description(goodreads_id)
 
