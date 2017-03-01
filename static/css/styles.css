@@ -25,6 +25,7 @@ table {
     width: 100%;
     padding: 10px;
     text-align: center;
+    box-shadow: rgba(187, 187, 187, 1) 0 0 20px -1px;
 }
 
 .modal {

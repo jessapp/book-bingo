@@ -74,6 +74,22 @@
     </table>
 </div>
 
+
+<!-- Chart -->
+<h3>Board Stats</h3>
+<h4>Find out who's read how many books on this board!</h4>
+<div id="chart"></div>
+<script type="text/javascript">
+   var myData = {{ data|tojson|safe }};
+
+   MY_CHART = document.getElementById("chart");
+   Plotly.plot(MY_CHART, 
+                myData);
+
+</script>
+
+
+
 <!-- Share Link -->
 
 <div>

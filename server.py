@@ -11,11 +11,13 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 
 from board import (user_login, register_new_user, get_user_boards, create_new_board,
                     add_user_to_board,create_genres, create_squares, 
-                    update_database, connect_to_goodreads)
+                    update_database, connect_to_goodreads, get_user_data_for_board)
 
 from sqlalchemy.orm.exc import NoResultFound
 
 import json
+
+import plotly.graph_objs as go
 
 
 
@@ -175,12 +177,30 @@ def display_board(board_id):
         board_rows = this_board.get_squares(user_id)
         board_name = Board.query.get(board_id).board_name
 
+        # make data correspond to each board's data
+        # x = players
+        # y = squares read
+
+        board_info = get_user_data_for_board(board_id)
+
+        x_axis = []
+        y_axis = []
+
+        for data in board_info:
+            x_axis.append(data[1])
+            y_axis.append(data[2])
+
+
+        data = [go.Bar(
+            x=x_axis,
+            y=y_axis
+            )]
 
         return render_template("board.html",
                                 board_rows=board_rows,
                                 board_id=board_id,
-                                board_name=board_name)
-
+                                board_name=board_name,
+                                data=data)
 
 @app.route('/update-board.json', methods=["POST"])
 def process_submission():

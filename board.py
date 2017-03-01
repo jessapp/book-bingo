@@ -9,6 +9,8 @@ from goodreads import (create_url, url_to_dict, get_title, get_author,
 
 from sqlalchemy.orm.exc import NoResultFound
 
+import plotly.graph_objs as go
+
 
 def register_new_user():
     """Add new user to database"""
@@ -241,3 +243,14 @@ def connect_to_goodreads():
                 }
 
     return book_data
+
+def get_user_data_for_board(board_id):
+    """Finds out which users have read how many books on a given board. Returns data as
+    a list of tuples. Example:
+    [(user_id, first_name, number_of_books)]"""
+
+    board_users_data = db.session.query(SquareUser.user_id, User.first_name, db.func.count(SquareUser.squ_id)).filter(BoardUser.board_id == board_id).join(BoardUser, SquareUser.user_id == BoardUser.user_id).join(User, SquareUser.user_id == User.user_id).group_by(SquareUser.user_id, User.first_name).all()
+
+    return board_users_data
+
+
