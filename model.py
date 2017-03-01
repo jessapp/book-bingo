@@ -242,8 +242,8 @@ def example_data():
     board1.users.append(u1)
     board1.users.append(u2)
 
-    book1 = Book(title="Pride and Prejudice", author="Jane Austen")
-    book2 = Book(title="Mort", author="Terry Pratchett")
+    book1 = Book(title="Sample Romance Book", author="Jane Austen")
+    book2 = Book(title="Sample Fantasy Book", author="Terry Pratchett")
 
     genre1 = Genre(name="Romance")
     genre2 = Genre(name="Fantasy")

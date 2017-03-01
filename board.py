@@ -249,8 +249,28 @@ def get_user_data_for_board(board_id):
     a list of tuples. Example:
     [(user_id, first_name, number_of_books)]"""
 
-    board_users_data = db.session.query(SquareUser.user_id, User.first_name, db.func.count(SquareUser.squ_id)).filter(BoardUser.board_id == board_id).join(BoardUser, SquareUser.user_id == BoardUser.user_id).join(User, SquareUser.user_id == User.user_id).group_by(SquareUser.user_id, User.first_name).all()
+    board_users_data = db.session.query(SquareUser.user_id, User.first_name, db.func.count(SquareUser.squ_id)).filter(Square.board_id == board_id).join(Square, SquareUser.square_id == Square.square_id).join(User, SquareUser.user_id == User.user_id).group_by(SquareUser.user_id, User.first_name).all()
+
 
     return board_users_data
+
+
+def create_chart(board_info_lst):
+    """Using the data from the database, create a chart."""
+
+    x_axis = []
+    y_axis = []
+
+    for data in board_info_lst:
+        x_axis.append(data[1])
+        y_axis.append(data[2])
+
+
+    data = [go.Bar(
+        x=x_axis,
+        y=y_axis
+        )]
+
+    return data
 
 

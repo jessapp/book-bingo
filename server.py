@@ -11,7 +11,8 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 
 from board import (user_login, register_new_user, get_user_boards, create_new_board,
                     add_user_to_board,create_genres, create_squares, 
-                    update_database, connect_to_goodreads, get_user_data_for_board)
+                    update_database, connect_to_goodreads, get_user_data_for_board,
+                    create_chart)
 
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -183,18 +184,7 @@ def display_board(board_id):
 
         board_info = get_user_data_for_board(board_id)
 
-        x_axis = []
-        y_axis = []
-
-        for data in board_info:
-            x_axis.append(data[1])
-            y_axis.append(data[2])
-
-
-        data = [go.Bar(
-            x=x_axis,
-            y=y_axis
-            )]
+        data = create_chart(board_info)
 
         return render_template("board.html",
                                 board_rows=board_rows,

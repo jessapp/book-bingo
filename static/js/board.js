@@ -101,6 +101,3 @@ function modal(evt) {
 modal();
 
 
-// Chart
-
-

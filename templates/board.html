@@ -3,6 +3,7 @@
 
 <script src="/static/js/board.js"></script>
 
+
 <div id="board">
     <h1>{{ board_name }}</h1>
     <table border=1>
@@ -40,7 +41,7 @@
                           <form>
                               <div id="data-fields-{{ square['square_id'] }}">
                               <input name="title" type="text" class="book form-control" placeholder="Book Title" data-square-id="{{ square['square_id'] }}" required><br>
-                              <input type="text" name="author" class="form-control" placeholder="Author" required><br>
+                              <input type="text" name="author" class="author form-control" placeholder="Author" required><br>
                               <button type="button" class="submit btn btn-success">Submit</button>
                               </div>
                           </form>
@@ -76,16 +77,15 @@
 
 
 <!-- Chart -->
+
 <h3>Board Stats</h3>
 <h4>Find out who's read how many books on this board!</h4>
 <div id="chart"></div>
 <script type="text/javascript">
    var myData = {{ data|tojson|safe }};
-
    MY_CHART = document.getElementById("chart");
    Plotly.plot(MY_CHART, 
                 myData);
-
 </script>
 
 
@@ -99,5 +99,6 @@
     <p>http://localhost:5000/board/{{ board_id }}/invite</p>
 
 </div>
+
 
 {% endblock %}
