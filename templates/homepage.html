@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+<body class="home">
 <div class="container-fluid">
 <div class="jumbotron jumbotron-fluid">
   <h1 class="text-center">Book Bingo</h1>
   <p class="text-center">Log in or sign up to get started!</p>
-    <p class="text-center"><a class="btn btn-primary btn-lg homepage-button" href="/login" role="button">Log In</a>
-    <a class="btn btn-primary btn-lg homepage-button" href="/register" role="button">Sign Up</a>
+    <p class="text-center"><a class="btn btn-primary btn-lg homepage-button" id="login-btn" href="/login" role="button">Log In</a>
+    <a class="btn btn-primary btn-lg homepage-button" href="/register" id="register-btn" role="button">Sign Up</a></p>
 </div>
 </div>
+</body>
 
 
 {% endblock %}

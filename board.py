@@ -209,6 +209,19 @@ def update_database():
     print "Commit: Book title %s Author %s Square_ID %s Board ID %s" % (title, author, square_id, board_id)
 
 
+def get_users_on_board(board_id):
+    """Get list of users on a particular board and return list of their user_ids"""
+
+    users = Board.query.get(board_id).users
+
+    board_users = []
+
+    for user in users:
+        user_id = user.user_id
+        board_users.append(user_id)
+
+    return board_users
+
 
 def connect_to_goodreads():
     """Connect to Goodreads API"""

@@ -21,6 +21,7 @@ Users can set personal reading goals by playing on their own, or play with frien
 * HTML
 * CSS
 * Goodreads API
+* Plotly
 
 (Dependencies are listed in requirements.txt)
 
@@ -30,10 +31,11 @@ Users can set personal reading goals by playing on their own, or play with frien
 
 * User registration and login (PostgreSQL/SQLAlchemy)
 * Flask app renders HTML and handles requests to the database
-* Search for book descriptions through the Goodreads API
-* AJAX and jQuery provide real-time feedback on the board
-* Dynamic share links allow users to invite friends to collaborate on a board
+* App searches for book descriptions through the Goodreads API and displays them on the board
+* AJAX and jQuery provide real-time feedback about which genres have been read
 * Modal windows provide details about each genre, including which books other users on the board have read
+* Dynamic share links allow users to invite friends to collaborate on a board
+* Plotly graphs display how many books each user has read on each board
 
 ---
 ### Author

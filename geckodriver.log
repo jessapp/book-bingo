@@ -1,0 +1,178 @@
+1488494116115	geckodriver	INFO	Listening on 127.0.0.1:58787
+1488494117249	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.2h1a8fLrGF2w
+1488494117250	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488494117266	geckodriver::marionette	INFO	Connecting to Marionette on localhost:58796
+1488494117767	Marionette	INFO	Listening on port 58796
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488494568449	geckodriver	INFO	Listening on 127.0.0.1:58898
+1488494569512	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.Xpgkahmfk7kj
+1488494569513	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488494569516	geckodriver::marionette	INFO	Connecting to Marionette on localhost:58907
+1488494570039	Marionette	INFO	Listening on port 58907
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488494594596	geckodriver	INFO	Listening on 127.0.0.1:58945
+1488494595654	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.S3i4GxolGGXP
+1488494595655	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488494595657	geckodriver::marionette	INFO	Connecting to Marionette on localhost:58954
+1488494596106	Marionette	INFO	Listening on port 58954
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488494986349	geckodriver	INFO	Listening on 127.0.0.1:59050
+1488494987403	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.vMS7hAV5Bh34
+1488494987404	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488494987406	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59059
+1488494987890	Marionette	INFO	Listening on port 59059
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488495035065	geckodriver	INFO	Listening on 127.0.0.1:59101
+1488495036123	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.0ZcczfhI1kXp
+1488495036124	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495036126	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59110
+1488495036655	Marionette	INFO	Listening on port 59110
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: resource://gre/modules/commonjs/toolkit/loader.js -> resource://gre/modules/commonjs/sdk/system/environment.js, line 15: Proxy.create and Proxy.createFunction are deprecated, use new Proxy instead
+console.warn: Asynchronous operation was aborted as selection changed.
+console.error: 
+  Protocol error (noSuchActor): No such actor for ID: server1.conn0.highlighter30
+1488495195996	geckodriver	INFO	Listening on 127.0.0.1:59166
+1488495197051	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.1t0Vr8HwVHh0
+1488495197052	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495197055	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59175
+1488495197539	Marionette	INFO	Listening on port 59175
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488495323118	geckodriver	INFO	Listening on 127.0.0.1:59217
+1488495324172	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.RQ2cZRyIvI8p
+1488495324173	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495324176	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59226
+1488495324661	Marionette	INFO	Listening on port 59226
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488495373517	geckodriver	INFO	Listening on 127.0.0.1:59269
+1488495374573	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.KZpnCC3Agy7J
+1488495374574	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495374576	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59278
+1488495375044	Marionette	INFO	Listening on port 59278
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488495386680	geckodriver	INFO	Listening on 127.0.0.1:59321
+1488495387733	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.kqTGCxCv4aaT
+1488495387734	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495387737	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59330
+1488495388196	Marionette	INFO	Listening on port 59330
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488495644104	geckodriver	INFO	Listening on 127.0.0.1:59396
+1488495645157	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.1inArL0QfMWh
+1488495645158	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495645160	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59405
+1488495645612	Marionette	INFO	Listening on port 59405
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488495868186	geckodriver	INFO	Listening on 127.0.0.1:59460
+1488495869242	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.Pe8CmokP1bnX
+1488495869243	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495869245	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59469
+1488495869685	Marionette	INFO	Listening on port 59469
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488495917971	geckodriver	INFO	Listening on 127.0.0.1:59508
+1488495919023	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.XqakH5MwWEtW
+1488495919024	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488495919026	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59517
+1488495919484	Marionette	INFO	Listening on port 59517
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496036858	geckodriver	INFO	Listening on 127.0.0.1:59572
+1488496037909	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.3MNeNVAdYq94
+1488496037910	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496037912	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59581
+1488496038361	Marionette	INFO	Listening on port 59581
+1488496066324	geckodriver	INFO	Listening on 127.0.0.1:59611
+1488496067381	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.SKWLw91nQfgp
+1488496067381	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496067384	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59620
+1488496067847	Marionette	INFO	Listening on port 59620
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496178707	geckodriver	INFO	Listening on 127.0.0.1:59675
+1488496179763	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.hQeA9bhzR2Oj
+1488496179764	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496179767	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59684
+1488496180218	Marionette	INFO	Listening on port 59684
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496201562	geckodriver	INFO	Listening on 127.0.0.1:59731
+1488496202616	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.hBEVQYKlsy0C
+1488496202617	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496202620	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59740
+1488496203069	Marionette	INFO	Listening on port 59740
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496266675	geckodriver	INFO	Listening on 127.0.0.1:59787
+1488496267733	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.uTdiSJGZQOVz
+1488496267734	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496267737	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59796
+1488496268191	Marionette	INFO	Listening on port 59796
+1488496288291	geckodriver	INFO	Listening on 127.0.0.1:59828
+1488496289343	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.r1QaLEBJMtbQ
+1488496289344	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496289347	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59837
+1488496289803	Marionette	INFO	Listening on port 59837
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496375774	geckodriver	INFO	Listening on 127.0.0.1:59889
+1488496376828	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.IxplOWnmLeJf
+1488496376828	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496376831	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59898
+1488496377280	Marionette	INFO	Listening on port 59898
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496769412	geckodriver	INFO	Listening on 127.0.0.1:59955
+1488496770469	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.J3N5iZGDmAIh
+1488496770470	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496770473	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59964
+1488496770920	Marionette	INFO	Listening on port 59964
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496774574	geckodriver	INFO	Listening on 127.0.0.1:60016
+1488496775625	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.VEnL6qWblKj9
+1488496775626	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496775628	geckodriver::marionette	INFO	Connecting to Marionette on localhost:60025
+1488496776072	Marionette	INFO	Listening on port 60025
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496825551	geckodriver	INFO	Listening on 127.0.0.1:60070
+1488496826602	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.g3wyTfIKGSab
+1488496826603	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496826605	geckodriver::marionette	INFO	Connecting to Marionette on localhost:60079
+1488496827060	Marionette	INFO	Listening on port 60079
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496830442	geckodriver	INFO	Listening on 127.0.0.1:60129
+1488496831497	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.ni7w2tL0z1ob
+1488496831498	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496831500	geckodriver::marionette	INFO	Connecting to Marionette on localhost:60138
+1488496831955	Marionette	INFO	Listening on port 60138
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496857597	geckodriver	INFO	Listening on 127.0.0.1:60185
+1488496858654	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.ABNWm9D3lSEb
+1488496858655	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496858657	geckodriver::marionette	INFO	Connecting to Marionette on localhost:60194
+1488496859108	Marionette	INFO	Listening on port 60194
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+1488496862635	geckodriver	INFO	Listening on 127.0.0.1:60244
+1488496863685	mozprofile::profile	INFO	Using profile path /var/folders/0k/303n8r7n4vngzd8rhnwvn6fm0000gn/T/rust_mozprofile.BrqcdNJU0qrA
+1488496863686	geckodriver::marionette	INFO	Starting browser /Applications/Firefox.app/Contents/MacOS/firefox-bin
+1488496863688	geckodriver::marionette	INFO	Connecting to Marionette on localhost:60253
+1488496864134	Marionette	INFO	Listening on port 60253
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://cdn.plot.ly/plotly-latest.min.js, line 9: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create

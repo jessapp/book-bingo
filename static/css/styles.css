@@ -14,6 +14,7 @@ h1 {
 .jumbotron {
     align-content: center;
     align-items: center;
+    opacity: 70%;
 }
 
 .homepage-button {
@@ -30,4 +31,9 @@ table {
 
 .modal {
     text-align: left;
+}
+
+body.home {
+    background: url(/static/img/books.jpg) no-repeat;
+    background-size: 100%;
 }

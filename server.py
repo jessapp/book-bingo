@@ -12,7 +12,7 @@ from model import (User, BoardUser, Board, Genre, Square, SquareUser, Book,
 from board import (user_login, register_new_user, get_user_boards, create_new_board,
                     add_user_to_board,create_genres, create_squares, 
                     update_database, connect_to_goodreads, get_user_data_for_board,
-                    create_chart)
+                    create_chart, get_users_on_board)
 
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -114,17 +114,22 @@ def logout_complete():
     return redirect("/")
 
 
-@app.route('/users/<user_id>')
+@app.route('/users/<int:user_id>')
 def display_user(user_id):
     """User homepage"""
 
-    first_name = db.session.query(User).filter_by(user_id=user_id).one().first_name
+    if session['user_id'] == user_id:
 
-    boards = get_user_boards(user_id)
+        first_name = db.session.query(User).filter_by(user_id=user_id).one().first_name
 
-    return render_template("user_details.html",
-                            first_name=first_name,
-                            boards=boards)
+        boards = get_user_boards(user_id)
+
+        return render_template("user_details.html",
+                                first_name=first_name,
+                                boards=boards)
+    else:
+        flash("You can't visit someone else's homepage!")
+        return redirect("/")
 
 
 @app.route('/create-board', methods=["GET"])
@@ -168,19 +173,17 @@ def create_board():
 def display_board(board_id):
     """Displays bingo board using information from database"""
 
-    if 'user_id' not in session:
-        flash("Please log in to view boards!")
-        return redirect("/login")
+    board_users = get_users_on_board(board_id)
+
+    if session['user_id'] not in board_users:
+        flash("You aren't a player on that board!")
+        return redirect("/")
     else: 
         user_id = session["user_id"]
 
         this_board = Board.query.get(board_id)
         board_rows = this_board.get_squares(user_id)
         board_name = Board.query.get(board_id).board_name
-
-        # make data correspond to each board's data
-        # x = players
-        # y = squares read
 
         board_info = get_user_data_for_board(board_id)
 
@@ -195,7 +198,6 @@ def display_board(board_id):
 @app.route('/update-board.json', methods=["POST"])
 def process_submission():
     """Processes Ajax call information to update board"""
-
     
     # Update the database with information from the board
     update_database()
