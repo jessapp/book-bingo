@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1> Welcome, {{first_name}}! </h1> <br>
+<div class="container-fluid">
+<div class="jumbotron jumbotron-user">
+<h1 class="text-center"> Welcome, {{first_name}}! </h1> <br>
 
     <a class="btn btn-success" href="/create-board" id= "new-board-btn" role="button">Create A New Board</a><br>
 
@@ -17,5 +19,8 @@
       {% else %}
       <p>You have no boards yet! Create a board to get started.</p>
       {% endif %}
+
+</div>
+</div>
 
 {% endblock %}

@@ -1,3 +1,8 @@
+.navbar {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
 h1 {
     font-family: sans-serif;
 }
@@ -9,13 +14,24 @@ h1 {
 .btn-success {
     background-color: #9370DB;
     border-color: #9370DB;
+
 }
 
-.jumbotron {
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+    background-color: #8A2BE2;
+    border-color: #8A2BE2;
+}
+
+.btn-primary {
+    border-radius: 24px;
+}
+
+.jumbotron-home {
     align-content: center;
     align-items: center;
-    opacity: 70%;
+    background: rgba(255, 255, 255, 0.8);
 }
+
 
 .homepage-button {
     display: inline-block;
@@ -36,4 +52,9 @@ table {
 body.home {
     background: url(/static/img/books.jpg) no-repeat;
     background-size: 100%;
+
+}
+
+.panel {
+    width: 30%
 }
