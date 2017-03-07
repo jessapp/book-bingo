@@ -50,7 +50,7 @@ function getBingo(x_coord, y_coord) {
             title: 'Bingo!',
             icon: 'glyphicon glyphicon-book',
             content: 'You got five in a row!',
-            type: 'purple'});
+            type: 'green'});
     };
 
 

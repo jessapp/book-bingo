@@ -12,7 +12,7 @@
     {% for row in board_rows %}
         <tr>
         {% for square in row %}
-            <td id="square-{{ square['square_id'] }}" data-square="square {{square['square_id']}}" data-xcoord="{{ square['x_coord'] }}" data-ycoord="{{ square['y_coord'] }}"{% if square.get('current_user') == True or square['genre'] == "FREE SQUARE" %} class="read" {% endif %}> <strong>{{ square['genre'] }} </strong><br>
+            <td id="square-{{ square['square_id'] }}" data-square="square {{square['square_id']}}" data-xcoord="{{ square['x_coord'] }}" data-ycoord="{{ square['y_coord'] }}"{% if square.get('current_user') == True or square['genre'] == "FREE SQUARE" %} class="read" {% endif %}> <h5>{{ square['genre'] }} </h5><br>
               {% if square['genre'] != "FREE SQUARE" %}
 
 
@@ -82,6 +82,8 @@
 
 <!-- Chart -->
 
+{% if data[0]['x'] != [] %}
+
 <div class="chart">
 <h3 class="center-title">Board Stats</h3>
 <h4 class="center-title">Find out how many books each player has read on this board:</h4>
@@ -93,6 +95,8 @@
                 myData);
 </script>
 </div>
+
+{% endif %}
 
 
 
