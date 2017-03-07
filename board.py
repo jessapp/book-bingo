@@ -281,7 +281,9 @@ def create_chart(board_info_lst):
 
     data = [go.Bar(
         x=x_axis,
-        y=y_axis
+        y=y_axis,
+        marker=dict(
+            color='rgb(106,242,156)')
         )]
 
     return data

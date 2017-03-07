@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>New Board</h1>
+<body class="new-board">
+
     <div>
     <form action="/create-board" class="form-inline" method="POST">
+    <h1>New Board</h1>
     <div class="col-xs-6">
     Board Name: <input type="text" class="form-control" name="board-name"><br><br>
-    <p>Choose 24 genres to fill out your bingo board:</p><br>
+    <h4>Choose 24 genres to fill out your bingo board:</h4><br>
     Genre #1: <input type="text" class="form-control" name="genre1" id="genre1" value="Fiction" required><br>
     Genre #2: <input type="text" class="form-control" name="genre2" id="genre2" value="Fantasy" required><br>
     Genre #3: <input type="text" class="form-control" name="genre3" id="genre3" value="Memoir" required><br>
@@ -30,16 +32,15 @@
     Genre #21: <input type="text" class="form-control" name="genre21" id="genre21" value="Romance" required><br>
     Genre #22: <input type="text" class="form-control" name="genre22" id="genre22" value="Color In the Title" required><br>
     Genre #23: <input type="text" class="form-control" name="genre23" id="genre23" value="Feminist Theory" required><br>
-    Genre #24: <input type="text" class="form-control" name="genre24" id="genre24" value="Horror" required><br>
+    Genre #24: <input type="text" class="form-control" name="genre24" id="genre24" value="Horror" required>
     <input type="submit" class="btn btn-success" value="Play Bingo!">
     </form>
     </div>
     </div>
 
-
-<div class="panel panel-default col-xs-6">
+<div class="panel panel-default col-xs-6 col-xs-offset-1 genre-panel">
   <div class="panel-body">
-    Can't think of any genres? How about one of these:
+    <h4 class="center-title"> Can't think of any genres? How about one of these:</h4> <br>
     <ul>
         <li>Suspense</li>
         <li>Recommended By A Friend</li>
@@ -63,5 +64,5 @@
     </ul>
   </div>
 </div>
-
+</body>
 {% endblock %}

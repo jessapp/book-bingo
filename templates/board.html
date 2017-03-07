@@ -3,14 +3,16 @@
 
 <script src="/static/js/board.js"></script>
 
+<div class="board-area">
 
-<div id="board">
-    <h1>{{ board_name }}</h1>
-    <table border=1>
+    <h1 class="center-title">{{ board_name }}</h1><br>
+<div id="board" class="row">
+  <div class="col-xs-12">
+    <table class="table table-responsive">
     {% for row in board_rows %}
         <tr>
         {% for square in row %}
-            <td id="square-{{ square['square_id'] }}" data-square="square {{square['square_id']}}" data-xcoord="{{ square['x_coord'] }}" data-ycoord="{{ square['y_coord'] }}"{% if square.get('current_user') == True or square['genre'] == "FREE SQUARE" %} class="read" {% endif %}> {{ square['genre'] }} <br>
+            <td id="square-{{ square['square_id'] }}" data-square="square {{square['square_id']}}" data-xcoord="{{ square['x_coord'] }}" data-ycoord="{{ square['y_coord'] }}"{% if square.get('current_user') == True or square['genre'] == "FREE SQUARE" %} class="read" {% endif %}> <strong>{{ square['genre'] }} </strong><br>
               {% if square['genre'] != "FREE SQUARE" %}
 
 
@@ -24,7 +26,7 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">{{ square['genre'] }}</h5>
+                        <h4 class="modal-title center-title" id="exampleModalLongTitle">{{ square['genre'] }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -74,12 +76,15 @@
     {% endfor %}
     </table>
 </div>
+</div>
+</div>
 
 
 <!-- Chart -->
 
-<h3>Board Stats</h3>
-<h4>Find out who's read how many books on this board!</h4>
+<div class="chart">
+<h3 class="center-title">Board Stats</h3>
+<h4 class="center-title">Find out how many books each player has read on this board:</h4>
 <div id="chart"></div>
 <script type="text/javascript">
    var myData = {{ data|tojson|safe }};
@@ -87,17 +92,18 @@
    Plotly.plot(MY_CHART, 
                 myData);
 </script>
+</div>
 
 
 
 <!-- Share Link -->
 
-<div>
-    <h3>Play with friends!</h3><br>
-    <p>Copy this link and send it to your friends to invite them to share this
-    board with you:</p>
+<div class="share">
+    <h3 class="center-title">Play with friends!</h3><br>
+    <h4 class="center-title">Copy this link and send it to your friends to invite them to share this
+    board with you:</h4>
     <div class="well well-sm">
-    <p>http://localhost:5000/board/{{ board_id }}/invite</p>
+    <p class="center-title">http://localhost:5000/board/{{ board_id }}/invite</p>
     </div>
 
 </div>

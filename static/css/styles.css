@@ -1,35 +1,65 @@
 .navbar {
     margin: 0;
-    margin-bottom: 10px;
+    background-color: rgba(236, 240, 241, 1);
 }
 
 h1 {
-    font-family: sans-serif;
+    font-family: 'Slabo 27px', serif;
+    font-size: 75px;
 }
 
+h2 {
+    font-family: 'Slabo 27px', serif;
+}
+
+h3 {
+    font-family: 'Slabo 27px', serif;
+    font-size: 50px;
+}
+
+h4 {
+    font-family: 'Slabo 27px', serif;
+    color: rgb(107,39,55);
+}
+
+h5 {
+    font-family: 'Slabo 27px', serif;
+}
+
+
 .read {
-    background-color: #98fb98
+    background-color: #6AF29C
 }
 
 .btn-success {
-    background-color: #9370DB;
-    border-color: #9370DB;
+    background-color: #6B2737;
+    border-color: #6E0C01;
 
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success:active {
-    background-color: #8A2BE2;
-    border-color: #8A2BE2;
+    background-color: #6E0C01 !important;
+    border-color: #6E0C01 !important;
+    box-shadow: none;
 }
 
 .btn-primary {
     border-radius: 24px;
+    background-color: #6B2737;
+    border-color: #6E0C01;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-success:active {
+    background-color: #6E0C01 !important;
+    border-color: #6E0C01 !important;
+    box-shadow: none;
 }
 
 .jumbotron-home {
     align-content: center;
     align-items: center;
     background: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
 }
 
 
@@ -39,10 +69,18 @@ h1 {
 
 table {
     table-layout: fixed;
-    width: 100%;
     padding: 10px;
     text-align: center;
     box-shadow: rgba(187, 187, 187, 1) 0 0 20px -1px;
+    border: 1px black;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    border: 1px black solid;
+}
+
+tr {
+    height: 115px;
 }
 
 .modal {
@@ -55,6 +93,34 @@ body.home {
 
 }
 
-.panel {
+body.user #body-div {
+    background: url(/static/img/userpage.jpg) center no-repeat;
+    background-size: 100%;
+    height: 50em;
+    margin-bottom: -10px;
+}
+
+body.new-board {
+    background: url(/static/img/bisect.jpg) center no-repeat;
+}
+
+
+body.about {
+    background: url(/static/img/bisect-about.jpg) center no-repeat;
+    background-size: 100%;
+    height: 50em;
+}
+
+.panel-default {
+    border: 2px #6B2737 solid;
     width: 30%
 }
+
+.user-info {
+    text-align: center;
+}
+
+.center-title {
+    text-align: center
+}
+
