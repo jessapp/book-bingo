@@ -1,68 +1,69 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<body class="new-board">
+<div id="new-board">
 
-    <div>
-    <form action="/create-board" class="form-inline" method="POST">
-    <h1>New Board</h1>
-    <div class="col-xs-6">
-    Board Name: <input type="text" class="form-control" name="board-name"><br><br>
-    <h4>Choose 24 genres to fill out your bingo board:</h4><br>
-    Genre #1: <input type="text" class="form-control" name="genre1" id="genre1" value="Fiction" required><br>
-    Genre #2: <input type="text" class="form-control" name="genre2" id="genre2" value="Fantasy" required><br>
-    Genre #3: <input type="text" class="form-control" name="genre3" id="genre3" value="Memoir" required><br>
-    Genre #4: <input type="text" class="form-control" name="genre4" id="genre4" value="Literary Classic" required><br>
-    Genre #5: <input type="text" class="form-control" name="genre5" id="genre5" value="Short Stories" required><br>
-    Genre #6: <input type="text" class="form-control" name="genre6" id="genre6" value="Female Author" required><br>
-    Genre #7: <input type="text" class="form-control" name="genre7" id="genre7" value="More Than 500 Pages" required><br>
-    Genre #8: <input type="text" class="form-control" name="genre8" id="genre8" value="Non-Fiction" required><br>
-    Genre #9: <input type="text" class="form-control" name="genre9" id="genre9" value="Science Fiction" required><br>
-    Genre #10: <input type="text" class="form-control" name="genre10" id="genre10" value="Banned Book" required><br>
-    Genre #11: <input type="text" class="form-control" name="genre11" id="genre11" value="Magical Realism" required><br>
-    Genre #12: <input type="text" class="form-control" name="genre12" id="genre12" value="True Crime" required><br>
-    Genre #13: <input type="text" class="form-control" name="genre13" id="genre13" value="Historical Fiction" required><br>
-    Genre #14: <input type="text" class="form-control" name="genre14" id="genre14" value="Graphic Novel" required><br>
-    Genre #15: <input type="text" class="form-control" name="genre15" id="genre15" value="Poetry" required><br>
-    Genre #16: <input type="text" class="form-control" name="genre16" id="genre16" value="Dystopia" required><br>
-    Genre #17: <input type="text" class="form-control" name="genre17" id="genre17" value="Book Involving Music" required><br>
-    Genre #18: <input type="text" class="form-control" name="genre18" id="genre18" value="Humor" required><br>
-    Genre #19: <input type="text" class="form-control" name="genre19" id="genre19" value="Biography" required><br>
-    Genre #20: <input type="text" class="form-control" name="genre20" id="genre20" value="YA Fiction" required><br>
-    Genre #21: <input type="text" class="form-control" name="genre21" id="genre21" value="Romance" required><br>
-    Genre #22: <input type="text" class="form-control" name="genre22" id="genre22" value="Color In the Title" required><br>
-    Genre #23: <input type="text" class="form-control" name="genre23" id="genre23" value="Feminist Theory" required><br>
-    Genre #24: <input type="text" class="form-control" name="genre24" id="genre24" value="Horror" required><br>
-    <input type="submit" class="btn btn-success" value="Play Bingo!">
-    </form>
-    </div>
-    </div>
+    <div class="row">
+            <h1>New Board</h1>
+            <div class="col-xs-6">
+                <form action="/create-board" class="form-inline" method="POST">
 
-<div class="panel panel-default col-xs-6 col-xs-offset-1 genre-panel">
-  <div class="panel-body">
-    <h4 class="center-title"> Can't think of any genres? How about one of these:</h4> <br>
-    <ul>
-        <li>Suspense</li>
-        <li>Recommended By A Friend</li>
-        <li>Written The Year You Were Born</li>
-        <li>A Book of Letters</li>
-        <li>A Book Bhat Has Been Adapted Into a Movie/TV Show</li>
-        <li>Second Book In a Series</li>
-        <li>A Book Involving Murder</li>
-        <li>Paranormal</li>
-        <li>Originally Written in Another Language</li>
-        <li>A Book With A White Cover</li>
-        <li>A Book With More Than One POV</li>
-        <li>National Book Award Winner</li>
-        <li>A Book You Own But Have Never Read</li>
-        <li>A Book That Takes Place Locally to Where You Live</li>
-        <li>Book With a Number in the Title</li>
-        <li>Religious/Spirituality</li>
-        <li>LGBTQA Literature</li>
-        <li>Self Help</li>
-        <li>Coming-of-Age</li>
-    </ul>
-  </div>
-</div>
-</body>
+                Board Name: <input type="text" class="form-control" name="board-name"><br><br>
+                <h4>Choose 24 genres to fill out your bingo board:</h4><br>
+                Genre #1: <input type="text" class="form-control" name="genre1" id="genre1" value="Fiction" required><br>
+                Genre #2: <input type="text" class="form-control" name="genre2" id="genre2" value="Fantasy" required><br>
+                Genre #3: <input type="text" class="form-control" name="genre3" id="genre3" value="Memoir" required><br>
+                Genre #4: <input type="text" class="form-control" name="genre4" id="genre4" value="Literary Classic" required><br>
+                Genre #5: <input type="text" class="form-control" name="genre5" id="genre5" value="Short Stories" required><br>
+                Genre #6: <input type="text" class="form-control" name="genre6" id="genre6" value="Female Author" required><br>
+                Genre #7: <input type="text" class="form-control" name="genre7" id="genre7" value="More Than 500 Pages" required><br>
+                Genre #8: <input type="text" class="form-control" name="genre8" id="genre8" value="Non-Fiction" required><br>
+                Genre #9: <input type="text" class="form-control" name="genre9" id="genre9" value="Science Fiction" required><br>
+                Genre #10: <input type="text" class="form-control" name="genre10" id="genre10" value="Banned Book" required><br>
+                Genre #11: <input type="text" class="form-control" name="genre11" id="genre11" value="Magical Realism" required><br>
+                Genre #12: <input type="text" class="form-control" name="genre12" id="genre12" value="True Crime" required><br>
+                Genre #13: <input type="text" class="form-control" name="genre13" id="genre13" value="Historical Fiction" required><br>
+                Genre #14: <input type="text" class="form-control" name="genre14" id="genre14" value="Graphic Novel" required><br>
+                Genre #15: <input type="text" class="form-control" name="genre15" id="genre15" value="Poetry" required><br>
+                Genre #16: <input type="text" class="form-control" name="genre16" id="genre16" value="Dystopia" required><br>
+                Genre #17: <input type="text" class="form-control" name="genre17" id="genre17" value="Book Involving Music" required><br>
+                Genre #18: <input type="text" class="form-control" name="genre18" id="genre18" value="Humor" required><br>
+                Genre #19: <input type="text" class="form-control" name="genre19" id="genre19" value="Biography" required><br>
+                Genre #20: <input type="text" class="form-control" name="genre20" id="genre20" value="YA Fiction" required><br>
+                Genre #21: <input type="text" class="form-control" name="genre21" id="genre21" value="Romance" required><br>
+                Genre #22: <input type="text" class="form-control" name="genre22" id="genre22" value="Color In the Title" required><br>
+                Genre #23: <input type="text" class="form-control" name="genre23" id="genre23" value="Feminist Theory" required><br>
+                Genre #24: <input type="text" class="form-control" name="genre24" id="genre24" value="Horror" required><br>
+                <input type="submit" class="btn btn-success" value="Play Bingo!">
+            </form>
+        </div>
+
+        <div class="panel panel-default col-xs-5 col-xs-offset-1 genre-panel">
+          <div class="panel-body">
+            <h4 class="center-title"> Can't think of any genres? How about one of these:</h4> <br>
+            <ul>
+                <li>Suspense</li>
+                <li>Recommended By A Friend</li>
+                <li>Written The Year You Were Born</li>
+                <li>A Book of Letters</li>
+                <li>A Book Bhat Has Been Adapted Into a Movie/TV Show</li>
+                <li>Second Book In a Series</li>
+                <li>A Book Involving Murder</li>
+                <li>Paranormal</li>
+                <li>Originally Written in Another Language</li>
+                <li>A Book With A White Cover</li>
+                <li>A Book With More Than One POV</li>
+                <li>National Book Award Winner</li>
+                <li>A Book You Own But Have Never Read</li>
+                <li>A Book That Takes Place Locally to Where You Live</li>
+                <li>Book With a Number in the Title</li>
+                <li>Religious/Spirituality</li>
+                <li>LGBTQA Literature</li>
+                <li>Self Help</li>
+                <li>Coming-of-Age</li>
+            </ul>
+          </div>
+        </div>
+    </div> <!-- row -->
+</div><!-- new-board -->
 {% endblock %}

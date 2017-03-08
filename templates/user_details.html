@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<body class="user">
-  <div class="row">
-  <div class="col-xs-6 user-info col-xs-offset-6">
-      <h1 class="text-center"> Welcome, {{first_name}}! </h1> <br>
+<!-- <body class="user"> -->
+  <div class="user">
+    <div class="row">
+      <div class="col-xs-6 user-info col-xs-offset-6">
+        <h1 class="text-center"> Welcome, {{first_name}}! </h1> <br>
 
-      <a class="btn btn-success" href="/create-board" id= "new-board-btn" role="button">Create A New Board</a><br><br>
+        <a class="btn btn-success" href="/create-board" id= "new-board-btn" role="button">Create A New Board</a><br><br>
 
 
-      {% if boards %}
-      <h2>Your boards: </h2>
-        {% for board_name, board_id in boards %}
-                  <a href="/board/{{board_id}}"> {{ board_name }}</a><br>
-        {% endfor %}
-        <br>
-        {% else %}
-        <p>You have no boards yet! Create a board to get started.</p>
-        {% endif %}
+        {% if boards %}
+        <h2>Your boards: </h2>
+          {% for board_name, board_id in boards %}
+                    <a href="/board/{{board_id}}"> {{ board_name }}</a><br>
+          {% endfor %}
+          <br>
+          {% else %}
+          <p>You have no boards yet! Create a board to get started.</p>
+          {% endif %}
         </div>
-        </div>
-</body>
+    </div>
+  </div>
 
 {% endblock %}
