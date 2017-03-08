@@ -41,7 +41,7 @@ Users can set personal reading goals by playing on their own, or play with frien
 
 Users can log in or register from the home page:
 
-![Book Bingo Homepage](https://github.com/jessapp/book-bingo/static/img/bookbingo_home)
+![Book Bingo Homepage](https://github.com/jessapp/book-bingo/static/img/bookbingo_home.png "Book Bingo Homepage")
 
 ---
 ### Author
