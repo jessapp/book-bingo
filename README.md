@@ -10,7 +10,7 @@ Users can set personal reading goals by playing on their own, or play with frien
 
 ### Technical Stack
 
-* Python
+* Python 2.7
 * Flask
 * JavaScript
 * PostreSQL
@@ -76,4 +76,4 @@ Each board has a share link, so users can invite friends to play with them. Shar
 ---
 ### Author
 
-Jessica Appelbaum is a software engineer living in San Francisco, CA.
+[Jessica Appelbaum](https://www.linkedin.com/in/jessapp/) is a software engineer living in San Francisco, CA.
