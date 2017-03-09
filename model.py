@@ -221,13 +221,23 @@ class BookGenre(db.Model):
 
 # Helper functions
 
-def connect_to_db(app, db_url='postgresql:///bookbingo'):
-    """Connect the database to the Flask app."""
+# def connect_to_db(app, db_url='postgresql:///bookbingo'):
+#     """Connect the database to the Flask app."""
 
-    # Configure to use our PstgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+#     # Configure to use our PstgreSQL database
+#     app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+#     db.app = app
+#     db.init_app(app) 
+
+
+def connect_to_db(app, db_uri=None):
+    """Connect our application to our database."""
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///bookbingo'
     db.app = app
-    db.init_app(app) 
+    db.init_app(app)
+    print "Connected to DB."
+
 
 def example_data():
     """Create example data to test the database"""
