@@ -4,6 +4,7 @@ Book Bingo is a full-stack web application which makes setting reading goals fun
 
 Users can set personal reading goals by playing on their own, or play with friends by inviting others to share their board. If a user is sharing their board, they can see descriptions of which books their friends have read for each category. 
 
+[Click this link to play!](http://book-bingo.herokuapp.com/)
 
 ---
 
