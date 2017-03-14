@@ -109,15 +109,17 @@ body, html {
 
 div.user {
     margin-left: -20px;
+    margin-right: -13px;
     margin-top: -3px;
     padding-left: 0;
     padding-bottom: 0;
     margin-bottom: 0;
     background-image: url(/static/img/userpage.jpg);
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-size: 100%;
     min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
 }
 
@@ -128,14 +130,15 @@ div#new-board {
     margin-top: -20px;
     padding-left: 0;
     margin-left: 20px;
+    margin-right: -14px;
     padding-bottom: 0;
     margin-bottom: 0;
     padding-right: 0;
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 100%;
     min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 
